@@ -59,3 +59,25 @@ for (var i = 0; i < myElements.length; i++) {
 //checkboxes:
 // http://stackoverflow.com/questions/5539139/change-get-check-state-of-checkbox
 // http://stackoverflow.com/questions/17564231/how-to-detect-the-change-of-checkbox-state
+
+
+
+
+// esempio di lettura di valori per pagine di settings
+myApp.onPageInit("contanti_2", function (page) {
+ var storedData = myApp.formGetData('form_generic1');
+  if(storedData) {
+    alert(JSON.stringify(storedData));
+
+    var cippa = JSON.stringify(storedData);
+    alert("var cippa is: " + cippa);
+
+    var mytext = JSON.parse(cippa);
+alert(mytext.betaopzione1);
+alert(mytext.betaopzione2);
+
+  }
+  else {
+    alert('There is no stored data for this form yet. Try to change any field');
+  }
+});

@@ -5,28 +5,16 @@ var myApp = new Framework7({
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
-  //Do something here with home page
-  //alert("home");
-
     var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
     if(storedData) {
-        //alert(JSON.stringify(storedData));
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
         var lippa = JSON.parse(cippa);  
-        //alert(cippa);
-        dirittiPosta = parseFloat(lippa.gen2_1); 
-        //document.getElementById("id_gen1_1").value = myglobal1;
+        dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
     }
-
-
-  
 });
  
 //And now we initialize app
 myApp.init();
-
-
-
 
 // Export selectors engine
 var $$ = Dom7;
@@ -41,25 +29,18 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
-
 // dichiarazione per tutto il file
 "use strict";
 
 // variabileglobale
 window.dirittiPosta = 1.78;
 
-
-// variabile globale
-//var myglobal1; //inutile?
-
 // prima di aprire pagina gen1
 myApp.onPageInit("gen1", function (page) {
     var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
     if(storedData) {
-        //alert(JSON.stringify(storedData));
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
         var lippa = JSON.parse(cippa);  
-        //alert(cippa);
         var myglobal1 = lippa.gen2_1; 
         document.getElementById("id_gen1_1").value = myglobal1;
     }
@@ -67,107 +48,12 @@ myApp.onPageInit("gen1", function (page) {
 
 // prima di aprire pagina gen2_1
 myApp.onPageInit("gen2", function (page) {
-
-document.getElementById("id_gen2_1").className="item-input disabled";
-
+    document.getElementById("id_gen2_1").className="item-input disabled";
     var chkBox = document.getElementById('check1');
     chkBox.checked = false;
-
-
 });
 
-// qui sotto:
-// contanti_2 non esiste
-// la parte non commentata funziona perfettamente
-// per una pagina tipo settings
-myApp.onPageInit("contanti_2", function (page) {
-//   console.log('About page initialized');
-//   console.log(page);
-//   myApp.alert("allarme");
-//   //localStorage.setItem("lastname", "Smith");
-//   var pippo = localStorage.getItem("lastname");
-//   myApp.alert(pippo); 
-//   var cippa = localStorage.getItem("assegno1");
-//   myApp.alert(cippa);
-//   var adsf = (localStorage.length); 
-//   myApp.alert(adsf);
-
-// for (var key in localStorage){
-//    myApp.alert(key);
-// }
-
-// for (var i = 0; i < localStorage.length; i++){
-//     // do something with localStorage.getItem(localStorage.key(i));
-//     myApp.alert(localStorage.key(i));
-// }
-
-
-//  var storedData = myApp.formGetData('form_generic1');
-//   if(storedData) {
-//     alert(JSON.stringify(storedData));
-//   }
-//   else {
-//     alert('There is no stored data for this form yet. Try to change any field')
-//   }
- var storedData = myApp.formGetData('form_generic1');
-  if(storedData) {
-    alert(JSON.stringify(storedData));
-
-    var cippa = JSON.stringify(storedData);
-    alert("var cippa is: " + cippa);
-
-    var mytext = JSON.parse(cippa);
-alert(mytext.betaopzione1);
-alert(mytext.betaopzione2);
-
-  }
-  else {
-    alert('There is no stored data for this form yet. Try to change any field');
-  }
-  
-
-// for (var i = 0; i < localStorage.length; i++) {
-// var key = localStorage.key(i);
-// var value = localStorage[key];
-// var pioppo = JSON.stringify(localStorage.getItem('alphaopzione1'));
-// alert(value);
-// alert("pioppo is: " + pioppo);
-// }
-
-
-
-});
-
-// // variabili globali
-// var myglobalvar1 = null;
-
-// $$(document).on('pageInit', function (e) {
-
-//     var page = e.detail.page;
-//     // Code for About page
-//     if (page.name === 'temp02') {
-        
-//         alert("page!");
-//         myglobalvar1 = document.getElementById("betaopzione1").value;
-
-//             alert(myglobalvar1);
-
-//     }
-//     // Code for Services page
-//     if (page.name === 'temp01') {
-//         myApp.alert('Here comes our services!');
-//                myglobalvar1 = document.getElementById("betaopzione1").value;
-//              alert(myglobalvar1);
-
-//     }
-
-
-
-//   // Do something here when page loaded and initialized
-
-// });
-
-
+// da qui: codice per le pagine
 // pagina bollettini
 function fBollettiniImporto(){
     var ul = document.getElementById("listaBollettini");    
@@ -218,10 +104,6 @@ function fBollettiniReset(){
     myApp.formDeleteData("form_bollettini_b");
 }
 
-function qualcosa(){
-    alert("qualcosa");
-}
-
 // pagina contanti
 function fContantiTotale(){
     var ul = document.getElementById("listaContanti");                                      // necessario dare un id alla lista
@@ -254,7 +136,6 @@ function fContantiReset(){
     }
     myApp.formDeleteData("form_contanti");
 }
-
 
 // da qui: pagina assegni
 function fAssegniTotale(){
@@ -293,98 +174,36 @@ var items = ul.getElementsByTagName("input");
 }
 
 function testreset(){
-
     genericreset("listaAssegni");
     myApp.formDeleteData("form_assegni1");
 }
 
-// function myfunc_prova1(){
-// // tutta da scrivere
-
-
-// // document.get
-
-// // var ul = document.getElementById("listaGeneric1");
-// // var items = ul.getElementsByTagName("input");
-// // var totaleValoreAssegni = 0;
-// //     for (var i = 0; i < items.length; i++) {    // cambiare qui, valore solo epr test
-// //         var a = parseFloat(items[i].value);
-// //         if (isNaN(a) === true){
-// //             a = 0;
-// //         }
-// //      totaleValoreAssegni += a;
-// //     }
-// //     document.getElementById("assegnoTotale").value = totaleValoreAssegni.toFixed(2);
-
-// // myApp.formStoredata("form_generic");
-// // myApp.formStoredata("form_generic1");
-
-// // var f = document.getElementById("alphaopzione1");
-// // alert(f);
-// // var a = document.getElementById("betaopzione1");
-// // alert(a);
-// // var b = document.getElementById("betaopzione2");
-// // //var c = getElementById("alphaopzione1");
-// // alert(b);
-
-// // var d = a * b;
-// // alert(d);
-
-
-// // document.getElementById("alphaopzione1").value = d;
-// // alert(d);
-
-// var a = document.getElementById("alphaopzione1").value;
-// alert(a);
-// var b = document.getElementById("betaopzione1").value;
-// alert(b);
-
-
-
-
-// }
-
-
 
 // pagina gen1
 function test01() {
-
-document.getElementById("id_gen1_1").className="item-input disabled";
-
-
-
+    document.getElementById("id_gen1_1").className="item-input disabled";
 }
-
 
 // funziona me è troppo complicata, quella sotto è parecchio più semplice :)
 function fCheckMyCLick() {
-
-// controllare check
-// se no, disabled - se si, enabled
+    // controllare check
+    // se no, disabled - se si, enabled
     var chkBox = document.getElementById('check1');
-    if (chkBox.checked)
-    {
-        alert("checked");
-document.getElementById("id_gen2_1").className="item-input";
-//document.getElementById("id_gen2_1").classList.toggle('disabled');
-
-
+    if (chkBox.checked) {
+        document.getElementById("id_gen2_1").className="item-input";
     }
-    else{
-    alert("uncjehcked");
-document.getElementById("id_gen2_1").className="item-input disabled";
-//document.getElementById('id_gen2_1').classList.toggle('disabled');
-
-}
-
-
-
+    else {
+        document.getElementById("id_gen2_1").className="item-input disabled";
+    }
 }
 
 // funziona coe toggle. semplice ed efficace
 function fCheckMyClick2() {
-
-    //alert("click");
     document.getElementById("id_gen2_1").classList.toggle("disabled");
+}
 
+
+// usata in pagina generic come test
+function qualcosa(){
+    alert("qualcosa");
 }
