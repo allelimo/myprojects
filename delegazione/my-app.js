@@ -89,16 +89,8 @@ function fBollettiniResto(){
     }
 }
 function fBollettiniReset(){
-    var ul = document.getElementById("listaBollettini");
-    var items = ul.getElementsByTagName("input");
-    for (var i = 0; i < items.length; i++) {
-        items[i].value = null;
-    }
-    var ul2 = document.getElementById("listaBollettiniTot");
-    var items2 = ul2.getElementsByTagName("input");
-    for (var j = 0; j < items2.length; j++) {
-        items2[j].value = null;
-    }
+    fListReset("listaBollettini");
+    fListReset("listaBollettiniTot");
     // delete stored data
     myApp.formDeleteData("form_bollettini");
     myApp.formDeleteData("form_bollettini_b");
@@ -129,11 +121,7 @@ function fContantiTotale(){
 }
 
 function fContantiReset(){
-    var ul = document.getElementById("listaContanti");
-    var items = ul.getElementsByTagName("input");
-    for (var i = 0; i < items.length; i++) {
-        items[i].value = null;
-    }
+    fListReset("listaContanti");
     myApp.formDeleteData("form_contanti");
 }
 
@@ -153,31 +141,19 @@ var totaleValoreAssegni = 0;
 }
 
 function fAssegniReset(){
-var ul = document.getElementById("listaAssegni");
-var items = ul.getElementsByTagName("input");
-    for (var i = 0; i < items.length; i++) {
-        items[i].value = null;
-    }
-    // necessario per riscrivere i valori di default se la form salva i dati auotmaticamente
+    fListReset("listaAssegni");
     myApp.formDeleteData("form_assegni1");
-
-// fGenericReset("listaAssegni");
-
 }
 
-function genericreset(nomelista){
+// funzione per resettare tutti gli elenchi
+// usare con nome della lista come "string"
+function fListReset(nomelista){
 var ul = document.getElementById(nomelista);
 var items = ul.getElementsByTagName("input");
     for (var i = 0; i < items.length; i++) {
         items[i].value = null;
     }
 }
-
-function testreset(){
-    genericreset("listaAssegni");
-    myApp.formDeleteData("form_assegni1");
-}
-
 
 // pagina gen1
 function test01() {
