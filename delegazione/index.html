@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
+    <title>Delegazione</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="../dist/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="../dist/css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="my-app.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Put panels-overlay and left-panel with view inside of views-->
+      <!-- Panels overlay-->
+      <div class="panel-overlay"></div>
+      <!-- Left panel with reveal effect-->
+      <div class="panel panel-left panel-cover">
+        <!-- Left view-->
+        <div class="view view-left navbar-through">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="left"></div>
+              <div class="center sliding">Applicazioni</div>
+              <div class="right"></div>
+            </div>
+          </div>
+          <div class="pages">
+            <div data-page="index-left" class="page"> <!--pagina di sinistra-->
+              <div class="page-content">
+                <div class="content-block-title">Pannello di controllo</div>
+                <div class="list-block"><!--prima serie di link-->
+                  <ul>
+                    <li><a href="index.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Diritti MTC</div>
+                          </div>
+                        </div></a></li>
+                    <li><a href="contanti.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Contanti</div>
+                          </div>
+                        </div></a></li>
+                    <li><a href="assegni.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Assegni 1</div>
+                          </div>
+                        </div></a></li>
+                  </ul>
+                </div>
+                <div class="list-block"><!--seconda serie di linka-->
+                  <ul>
+                    <li><a href="gen1.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Passaggi</div>
+                          </div>
+                        </div></a></li>
+                    <li><a href="gen2.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Impostazioni</div>
+                          </div>
+                        </div></a></li>
+                  </ul>
+                </div>
+                <div class="list-block"><!--terza serie di link-->
+                  <ul>
+                    <li><a href="about.html" data-view=".view-main" class="item-link close-panel">
+                        <div class="item-content">
+                          <div class="item-inner">
+                            <div class="item-title">Info</div>
+                          </div>
+                        </div></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Right view, it is main view-->
+      <div class="view view-main navbar-through">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="center sliding">Diritti MTC</div>
+            <div class="right"><a href="#" data-panel="left" class="link open-panel icon-only"><i class="icon icon-bars"></i></a></div>
+          </div>
+        </div>
+        <!-- Pages-->
+        <div class="pages">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="content-block-title">nuovo titolo della sezione di nuovo</div>
+              <form id="form_bollettini" class="store-data list-block tablet-inset">
+                <ul id="listaBollettini">
+                  <li><!--riga 1-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">10,20</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="id010"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="id010t"/>
+                    </div></div></div>
+                  <li><!--riga 2-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">16,00</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="id016"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="id016t"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--riga 3-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">32,00</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="id032"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="id032t"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--quarta riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">ciclo</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idcic"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idcict"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--quinta riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">moto</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idmot"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idmott"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--sesta riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">auto</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idvet"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idvett"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--settima riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">urgente</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idurg"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idurgt"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--8 riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">prova/ripetitrice agricola</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idpro"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idprot"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--setti9ma riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">rimorchio/ripetitrice</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idrim"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idrimt"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--10 riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">agricola</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idagr"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idagrt"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--11 riga-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">quadrata</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="nr." name="idqua"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="-" name="idquat"/>
+                    </div></div></div>
+                  </li>
+                  <li><!--ultima riga (totale)-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">totale</div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="totale" id="idtot" name="n_idtot"/>
+                    </div></div></div>
+                  </li>
+                  <li>
+                    <a href="#" class="item-link list-button" id="mybutton_b1" onclick="fBollettiniImporto()">Calcola gli importi</a>
+                  </li>                        
+                </ul>
+              </form>
+              <form id="form_bollettini_b" class="store-data list-block tablet-inset">
+              <!--<div class="store-data list-block tablet-inset">-->
+                <ul id="listaBollettiniTot">
+                  <li><!--contanti e resto-->
+                    <div class="item-content">
+                      <div class="item-inner"> 
+                        <div class="item-title label">contanti</div>
+                        <div class="item-input">
+                          <input type="number" placeholder="importo" id="idcont" name="n_idcont"/>
+                        </div>
+                        <div class="item-input disabled">
+                          <input type="text" style="text-align:right" placeholder="resto" id="idrest" name="n_idrest"/>
+                    </div></div></div>
+                  </li>
+                  <li>
+                    <a href="#" class="item-link list-button" id="mybutton_b2" onclick="fBollettiniResto()">Calcola il resto</a>
+                  </li>                        
+                </ul>
+              </form>
+              <div class="list-block tablet-inset">
+                <ul>
+                  <li>
+                    <a href="#" class="item-link list-button-red" id="mybutton_b3" onclick="fBollettiniReset()">Cancella tutti i valori</a>
+                  </li>                        
+                </ul>
+              </div>
+              </form>
+            </div><!--page content-->
+          </div><!--page-->
+        </div><!--pages-->
+      </div>
+    </div>
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../dist/js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="my-app.js"></script>
+  </body>
+</html>

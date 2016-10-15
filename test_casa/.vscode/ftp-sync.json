@@ -1,0 +1,16 @@
+{
+    "remotePath": "./myprojects/test_casa/",
+    "host": "31.220.16.20",
+    "username": "u314455654",
+    "password": "4lessandr0",
+    "port": 21,
+    "protocol": "ftp",
+    "uploadOnSave": true,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git"
+    ]
+}

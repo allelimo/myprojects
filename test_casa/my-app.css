@@ -1,0 +1,31 @@
+.list-block .item-link.list-button-red {
+  padding: 0 15px;
+  text-align: left;
+  color: #ff3b30;
+  display: block;
+  line-height: 43px;
+} 
+
+.list-block .item-link.list-button {
+  padding: 0 15px;
+  text-align: left;
+  color: #007aff;
+  display: block;
+  line-height: 43px;
+} 
+
+/*.navbar,
+.subnavbar {
+  background: #ffffff;
+}*/
+
+/*.view-main .navbar {
+  border-bottom: none;
+  background: #cc0442;
+  color: #fff;
+}
+.statusbar-overlay {
+  background: #cc0442;
+}*/
+
+/* f7f7f8 background color */ 

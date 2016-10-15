@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="transparent">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="../css/framework7.ios.min.css">
+    <link rel="stylesheet" href="../css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="my-app.css">
+  </head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+        <p>Left panel content goes here</p>
+      </div>
+    </div>
+    <!-- Right panel with cover effect-->
+    <div class="panel panel-right panel-cover">
+      <div class="content-block">
+        <p>Right panel content goes here</p>
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">Bollettini 2.0</div>
+            <div class="right">
+              <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, data-page contains page name-->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+            <div class="page-content">
+              <div class="content-block-title">Calcolo costo dei bollettini</div>
+              <div class="content-block">
+                <div class="row no-gutter">
+                  <div class="col-70">
+                    <!--<div class="content-block-title">What about simple navigation?</div>-->
+                    <div class="list-block">
+                      <ul>
+                        <li><!--colonna 1, riga 1-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">10,00</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="id010"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 1-->
+                        <li><!--colonna 1, riga 2-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">16,00</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="id016"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 2-->
+                        <li><!--colonna 1, riga 3-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">32,00</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="id032"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 3-->
+                        <li><!--colonna 1, riga 4-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">ciclo</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="idcic"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 4-->
+                        <li><!--colonna 1, riga 5-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">moto</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="idmot"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 5-->
+                        <li><!--colonna 1, riga 6-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">auto</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="idvet"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 6-->
+                        <li><!--colonna 1, riga 7-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label">urgente</div>
+                              <div class="item-input">
+                                <input type="number" placeholder="nr." id="idurg"/>
+                          </div></div></div>
+                        </li><!--colonna 1, riga 7-->
+                        <li><!--colonna 1, riga 8--><!--spazio bianco prima di totale-->
+                          <div class="item-content"> 
+                            <div class="item-inner">
+                              <div class="item-title label"></div>
+                          </div></div>
+                        </li><!--colonna 1, riga 8-->
+                      </ul>
+                    </div>
+                  </div><!--fine prima colonna-->
+                  <div class="col-30">
+                    <!--<div class="content-block-title">What about simple navigation?</div>-->
+                    <div class="list-block">
+                      <ul>
+                        <li><!--colonna 2, riga 1-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="id010t"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 1-->
+                            <li><!--colonna 2, riga 2-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="id016t"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 2-->
+                        <li><!--colonna 2, riga 3-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="id032t"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 3-->
+                        <li><!--colonna 2, riga 4-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="idcict"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 4-->
+                        <li><!--colonna 2, riga 5-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="idmott"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 5-->
+                        <li><!--colonna 2, riga 6-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="idvett"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 6-->
+                        <li><!--colonna 2, riga 7-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="idurgt"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 7-->
+                        <li><!--colonna 2, riga 8-->
+                          <div class="item-content disabled"> 
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" style="text-align:right" placeholder="totale" id="idtot"/>
+                          </div></div></div>
+                        </li><!--colonna 2, riga 8-->
+                      </ul>
+                    </div>
+                  </div><!--fine seconda colonna-->
+                </div><!--fine row no-gutter-->
+              </div><!--fine content-block calcolo costo-->
+              <!--due bottoni per calcolo e reset-->
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <a href="#" class="item-link list-button" id="mybutton1" onclick="myfunction1()">Calcola l'importo</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <a href="#" class="item-link list-button-red" id="mybutton2" onclick="myfunction2()">Cancella tutti i valori</a>
+                  </li>
+                </ul>
+              </div>
+              <br>
+            </div><!--page content-->
+          </div><!--data page-->
+        </div><!--pages navbar-->
+        <!-- Bottom Toolbar-->
+        <div class="toolbar">
+          <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+        </div>
+      </div><!--view main-->
+    </div><!--views-->
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="my-app.js"></script>
+  </body>
+</html>
