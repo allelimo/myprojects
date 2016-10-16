@@ -125,9 +125,9 @@ function fContantiReset(){
     myApp.formDeleteData("form_contanti");
 }
 
-// da qui: pagina assegni
-function fAssegniTotale(){
-var ul = document.getElementById("listaAssegni");
+// test
+function fGenericTotale(nomelista, idtotale){
+var ul = document.getElementById(nomelista);
 var items = ul.getElementsByTagName("input");
 var totaleValoreAssegni = 0;
     for (var i = 0; i < items.length -1; i++) { 
@@ -137,8 +137,28 @@ var totaleValoreAssegni = 0;
         }
      totaleValoreAssegni += a;
     }
-    document.getElementById("assegnoTotale").value = totaleValoreAssegni.toFixed(2);
+    document.getElementById(idtotale).value = totaleValoreAssegni.toFixed(2);
 }
+
+function fAssegniTotale(){
+    fGenericTotale("listaAssegni", "assegnoTotale");
+}
+
+
+// da qui: pagina assegni
+// function fAssegniTotale(){
+// var ul = document.getElementById("listaAssegni");
+// var items = ul.getElementsByTagName("input");
+// var totaleValoreAssegni = 0;
+//     for (var i = 0; i < items.length -1; i++) { 
+//         var a = parseFloat(items[i].value);
+//         if (isNaN(a) === true){
+//             a = 0;
+//         }
+//      totaleValoreAssegni += a;
+//     }
+//     document.getElementById("assegnoTotale").value = totaleValoreAssegni.toFixed(2);
+// }
 
 function fAssegniReset(){
     fListReset("listaAssegni");
@@ -146,18 +166,22 @@ function fAssegniReset(){
 }
 
 function fAssegniTotale2(){
-var ul = document.getElementById("listaAssegni2");
-var items = ul.getElementsByTagName("input");
-var totaleValoreAssegni = 0;
-    for (var i = 0; i < items.length -1; i++) { 
-        var a = parseFloat(items[i].value);
-        if (isNaN(a) === true){
-            a = 0;
-        }
-     totaleValoreAssegni += a;
-    }
-    document.getElementById("assegnoTotale2").value = totaleValoreAssegni.toFixed(2);
+    fGenericTotale("listaAssegni2", "assegnoTotale2");
 }
+
+// function fAssegniTotale2(){
+// var ul = document.getElementById("listaAssegni2");
+// var items = ul.getElementsByTagName("input");
+// var totaleValoreAssegni = 0;
+//     for (var i = 0; i < items.length -1; i++) { 
+//         var a = parseFloat(items[i].value);
+//         if (isNaN(a) === true){
+//             a = 0;
+//         }
+//      totaleValoreAssegni += a;
+//     }
+//     document.getElementById("assegnoTotale2").value = totaleValoreAssegni.toFixed(2);
+// }
 
 function fAssegniReset2(){
     fListReset("listaAssegni2");
