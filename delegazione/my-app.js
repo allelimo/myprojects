@@ -130,7 +130,7 @@ function fAssegniTotale(){
 var ul = document.getElementById("listaAssegni");
 var items = ul.getElementsByTagName("input");
 var totaleValoreAssegni = 0;
-    for (var i = 0; i < items.length -1; i++) {    // cambiare qui, valore solo epr test
+    for (var i = 0; i < items.length -1; i++) { 
         var a = parseFloat(items[i].value);
         if (isNaN(a) === true){
             a = 0;
@@ -143,6 +143,25 @@ var totaleValoreAssegni = 0;
 function fAssegniReset(){
     fListReset("listaAssegni");
     myApp.formDeleteData("form_assegni1");
+}
+
+function fAssegniTotale2(){
+var ul = document.getElementById("listaAssegni2");
+var items = ul.getElementsByTagName("input");
+var totaleValoreAssegni = 0;
+    for (var i = 0; i < items.length -1; i++) { 
+        var a = parseFloat(items[i].value);
+        if (isNaN(a) === true){
+            a = 0;
+        }
+     totaleValoreAssegni += a;
+    }
+    document.getElementById("assegnoTotale2").value = totaleValoreAssegni.toFixed(2);
+}
+
+function fAssegniReset2(){
+    fListReset("listaAssegni2");
+    myApp.formDeleteData("form_assegni2");
 }
 
 // funzione per resettare tutti gli elenchi
