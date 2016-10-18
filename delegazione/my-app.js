@@ -53,6 +53,33 @@ myApp.onPageInit("gen2", function (page) {
     chkBox.checked = false;
 });
 
+// funzioni generiche
+
+// funzione per resettare tutti gli elenchi
+// usare con nome della lista come "string"
+function fListReset(nomelista){
+var ul = document.getElementById(nomelista);
+var items = ul.getElementsByTagName("input");
+    for (var i = 0; i < items.length; i++) {
+        items[i].value = null;
+    }
+}
+
+// funzione per calcolare il totale dei valori di una lista
+function fGenericTotale(nomelista, idtotale){
+var ul = document.getElementById(nomelista);
+var items = ul.getElementsByTagName("input");
+var totaleValoreAssegni = 0;
+    for (var i = 0; i < items.length -1; i++) { 
+        var a = parseFloat(items[i].value);
+        if (isNaN(a) === true){
+            a = 0;
+        }
+     totaleValoreAssegni += a;
+    }
+    document.getElementById(idtotale).value = totaleValoreAssegni.toFixed(2);
+}
+
 // da qui: codice per le pagine
 // pagina bollettini
 function fBollettiniImporto(){
@@ -125,40 +152,10 @@ function fContantiReset(){
     myApp.formDeleteData("form_contanti");
 }
 
-// test
-function fGenericTotale(nomelista, idtotale){
-var ul = document.getElementById(nomelista);
-var items = ul.getElementsByTagName("input");
-var totaleValoreAssegni = 0;
-    for (var i = 0; i < items.length -1; i++) { 
-        var a = parseFloat(items[i].value);
-        if (isNaN(a) === true){
-            a = 0;
-        }
-     totaleValoreAssegni += a;
-    }
-    document.getElementById(idtotale).value = totaleValoreAssegni.toFixed(2);
-}
-
+// pagina assegni 1 e 2
 function fAssegniTotale(){
     fGenericTotale("listaAssegni", "assegnoTotale");
 }
-
-
-// da qui: pagina assegni
-// function fAssegniTotale(){
-// var ul = document.getElementById("listaAssegni");
-// var items = ul.getElementsByTagName("input");
-// var totaleValoreAssegni = 0;
-//     for (var i = 0; i < items.length -1; i++) { 
-//         var a = parseFloat(items[i].value);
-//         if (isNaN(a) === true){
-//             a = 0;
-//         }
-//      totaleValoreAssegni += a;
-//     }
-//     document.getElementById("assegnoTotale").value = totaleValoreAssegni.toFixed(2);
-// }
 
 function fAssegniReset(){
     fListReset("listaAssegni");
@@ -169,34 +166,11 @@ function fAssegniTotale2(){
     fGenericTotale("listaAssegni2", "assegnoTotale2");
 }
 
-// function fAssegniTotale2(){
-// var ul = document.getElementById("listaAssegni2");
-// var items = ul.getElementsByTagName("input");
-// var totaleValoreAssegni = 0;
-//     for (var i = 0; i < items.length -1; i++) { 
-//         var a = parseFloat(items[i].value);
-//         if (isNaN(a) === true){
-//             a = 0;
-//         }
-//      totaleValoreAssegni += a;
-//     }
-//     document.getElementById("assegnoTotale2").value = totaleValoreAssegni.toFixed(2);
-// }
-
 function fAssegniReset2(){
     fListReset("listaAssegni2");
     myApp.formDeleteData("form_assegni2");
 }
 
-// funzione per resettare tutti gli elenchi
-// usare con nome della lista come "string"
-function fListReset(nomelista){
-var ul = document.getElementById(nomelista);
-var items = ul.getElementsByTagName("input");
-    for (var i = 0; i < items.length; i++) {
-        items[i].value = null;
-    }
-}
 
 // pagina gen1
 function test01() {
@@ -220,7 +194,6 @@ function fCheckMyCLick() {
 function fCheckMyClick2() {
     document.getElementById("id_gen2_1").classList.toggle("disabled");
 }
-
 
 // usata in pagina generic come test
 function qualcosa(){
