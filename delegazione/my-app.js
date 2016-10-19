@@ -198,4 +198,29 @@ function fCheckMyClick2() {
 // usata in pagina generic come test
 function qualcosa(){
     alert("qualcosa");
+
+var iptbase = 150.81;
+var iptcoeff = 3.51;
+var iptmilano = 1.3;
+
+var kw = 101;
+var iptlorda = 0;
+var iptarrot = 0;
+
+if(kw < 54) {
+
+    iptlorda = iptbase * iptmilano;
+    iptlorda = Math.floor(iptlorda);
+    iptarrot = iptlorda.toFixed(2);
+} else {
+
+iptlorda = kw * iptcoeff * iptmilano;
+alert(iptlorda);
+iptlorda = Math.ceil(iptlorda);
+iptarrot = iptlorda.toFixed(2);
+
+}
+alert(iptlorda);
+alert(iptarrot);
+
 }
