@@ -223,4 +223,16 @@ iptarrot = iptlorda.toFixed(2);
 alert(iptlorda);
 alert(iptarrot);
 
+alert(round5(iptarrot));
+
+// test array province
+var provincie = ["mi", "bo", "to", "ve"];
+alert(province.indexOf("bo"));
+alert(province.indexOf("va"));
+
+
+}
+
+function round5(x){
+    return Math.ceil(x/5)*5;
 }
