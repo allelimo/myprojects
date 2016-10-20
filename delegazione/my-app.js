@@ -226,7 +226,7 @@ alert(iptarrot);
 alert(round5(iptarrot));
 
 // test array province
-var provincie = ["mi", "bo", "to", "ve"];
+var province = ["mi", "bo", "to", "ve"];
 alert(province.indexOf("bo"));
 alert(province.indexOf("va"));
 
