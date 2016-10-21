@@ -1,6 +1,27 @@
 // Initialize your app
 var myApp = new Framework7({
-      init: false //Disable App's automatica initialization
+      init: false, //Disable App's automatic initialization
+
+    precompileTemplates: true,
+    // Enabled pages rendering using Template7
+    template7Pages: true,
+    // Specify Template7 data for pages
+    template7Data: {
+        // Will be applied for page with "projects.html" url
+        'url:generic.html': {
+        provelenco: [
+                        {
+                            provsg: "mi",
+                        },
+                        {
+                            provsg: "bo",
+                        }
+        ]           ,
+        }
+    }
+
+
+
 });
 
 //Now we add our callback for initial page

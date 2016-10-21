@@ -142,16 +142,19 @@
             <a href="#" class="item-link smart-select">
               <!-- select -->
               <select name="provincia">
-                <option value="mi" selected>milano</option>
+              <!--  <option value="mi" selected>milano</option>
                 <option value="rm">roma</option>
-                <option value="bg">bergamo</option>
+                <option value="bg">bergamo</option> -->
+              {{#each provelenco}}
+                <option value="">{{provsg}}</option>  
+              {{/each}}
               </select>
               <div class="item-content">
                 <div class="item-inner">
                   <!-- Select label -->
                   <div class="item-title">Provincia</div>
                   <!-- Selected value, not required -->
-                  <div class="item-after">milano</div>
+                  <!--<div class="item-after">milano</div>-->
                 </div>
               </div>
             </a>
