@@ -219,36 +219,55 @@ function fCheckMyClick2() {
 function qualcosa(){
     alert("qualcosa");
 
-var iptbase = 150.81;
-var iptcoeff = 3.51;
-var iptmilano = 1.3;
+// var iptbase = 150.81;
+// var iptcoeff = 3.51;
+// var iptmilano = 1.3;
 
-var kw = 101;
-var iptlorda = 0;
-var iptarrot = 0;
+// var kw = 101;
+// var iptlorda = 0;
+// var iptarrot = 0;
 
-if(kw < 54) {
+// if(kw < 54) {
 
-    iptlorda = iptbase * iptmilano;
-    iptlorda = Math.floor(iptlorda);
-    iptarrot = iptlorda.toFixed(2);
-} else {
+//     iptlorda = iptbase * iptmilano;
+//     iptlorda = Math.floor(iptlorda);
+//     iptarrot = iptlorda.toFixed(2);
+// } else {
 
-iptlorda = kw * iptcoeff * iptmilano;
-alert(iptlorda);
-iptlorda = Math.ceil(iptlorda);
-iptarrot = iptlorda.toFixed(2);
+// iptlorda = kw * iptcoeff * iptmilano;
+// alert(iptlorda);
+// iptlorda = Math.ceil(iptlorda);
+// iptarrot = iptlorda.toFixed(2);
 
-}
-alert(iptlorda);
-alert(iptarrot);
+// }
+// alert(iptlorda);
+// alert(iptarrot);
 
-alert(round5(iptarrot));
+// alert(round5(iptarrot));
 
 // test array province
 var province = ["mi", "bo", "to", "ve"];
 alert(province.indexOf("bo"));
-alert(province.indexOf("va"));
+//alert(province.indexOf("va"));
+
+
+
+//var abcdef = $('provincia').val();
+
+var test = $$("select#provincia").val();
+    if (test.length){
+//		 myApp.alert("select exists");
+//         myApp.alert(test);
+         alert(test);
+    }
+
+//alert("value " + abcdef);
+
+
+alert(province.indexOf(test));
+
+var test2 = $$("select#tipoveicolo").val();
+alert(test2);
 
 
 }
