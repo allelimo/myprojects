@@ -12,15 +12,40 @@
       <div class="content-block-title">generic title</div>
       <form id="form_generic" class="store-data list-block tablet-inset">
         <ul id="listaGeneric">
-          <li><!--riga 1-->
-            <div class="item-content">
+          <!--<li><!--riga 1-->
+            <!--<div class="item-content">
               <div class="item-inner"> 
                 <div class="item-title label">tipo veicolo</div>
                 <div class="item-input">
                   <input type="number" style="text-align:right" placeholder="importo" name="alphaopzione1"/>
                 </div>
             </div></div>
+          </li>-->
+
+          <!-- Smart select item -->
+          <li>
+            <!-- Additional "smart-select" class -->
+            <a href="#" class="item-link smart-select">
+              <!-- select -->
+              <select name="tipoveicolo">
+                <option value="av" selected>autovettura</option>
+                <option value="mc">motociclo</option>
+                <option value="ac">autocarro</option>
+                <option value="ac">speciale</option>
+              </select>
+              <div class="item-content">
+                <div class="item-inner">
+                  <!-- Select label -->
+                  <div class="item-title">tipo veicolo</div>
+                  <!-- Selected value, not required -->
+                  <div class="item-after">autovettura</div>
+                </div>
+              </div>
+            </a>
           </li>
+          <!-- Another smart selects or list view elements -->
+
+
           <li><!--riga 2-->
             <div class="item-content">
               <div class="item-inner"> 
@@ -48,15 +73,30 @@
                 </div>
             </div></div>
           </li>
-          <li><!--riga 5-->
+
+          <li>
             <div class="item-content">
+              <div class="item-inner"> 
+                <div class="item-title label">cdp</div>
+                <div class="item-after"> 
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox"/>
+                        <div class="checkbox"></div>
+                      </label>
+                </div></div></div></div>
+          </li>
+          <!-- add here: codice per default check-->
+
+          <!--<li><!--riga 5-->
+            <!--<div class="item-content">
               <div class="item-inner"> 
                 <div class="item-title label">cdp</div>
                 <div class="item-input">
                   <input type="number" style="text-align:right" placeholder="importo" name="opzione5"/>
                 </div>
             </div></div>
-          </li>
+          </li>-->
           <li><!--riga 6-->
             <div class="item-content">
               <div class="item-inner"> 
@@ -145,8 +185,8 @@
               <!--  <option value="mi" selected>milano</option>
                 <option value="rm">roma</option>
                 <option value="bg">bergamo</option> -->
-              {{#each provelenco}}
-                <option value="">{{provsg}}</option>  
+              {{#each provaelenco}}
+                <option value="{{psg}}">{{prv}}</option>  
               {{/each}}
               </select>
               <div class="item-content">
