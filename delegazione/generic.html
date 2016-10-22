@@ -25,7 +25,7 @@
           <!-- Smart select item -->
           <li>
             <!-- Additional "smart-select" class -->
-            <a href="#" class="item-link smart-select">
+            <a href="#" class="item-link smart-select tablet-inset">
               <!-- select -->
               <select name="tipoveicolo" id="tipoveicolo">
                 <option value="av" selected>autovettura</option>
@@ -185,9 +185,15 @@
               <!--  <option value="mi" selected>milano</option>
                 <option value="rm">roma</option>
                 <option value="bg">bergamo</option> -->
-              {{#each provaelenco}}
+              <!--{{#each provaelenco}}
                 <option value="{{psg}}">{{prv}}</option>  
+              {{/each}}-->
+
+              {{#each props}}
+                <option value="{{@key}}">{{this}}</option>
               {{/each}}
+
+
               </select>
               <div class="item-content">
                 <div class="item-inner">
