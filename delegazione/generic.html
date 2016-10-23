@@ -36,7 +36,7 @@
               <div class="item-content">
                 <div class="item-inner">
                   <!-- Select label -->
-                  <div class="item-title">tipo veicolone</div>
+                  <div class="item-title">tipo veicolo2</div>
                   <!-- Selected value, not required -->
                   <div class="item-after">autovettura</div>
                 </div>
@@ -56,15 +56,30 @@
             </div></div>
           </li>
           <li><!--riga 3-->
-            <div class="item-content">
-              <div class="item-inner"> 
-                <div class="item-title label">portata netta</div>
-                <div class="item-input">
-                  <input type="number" style="text-align:right" placeholder="importo" name="opzione3"/>
+            <!-- Additional "smart-select" class -->
+            <a href="#" class="item-link smart-select"> <!--test inset per smart select non funziona -->
+              <!-- select -->
+              <select name="tipoveicolo" id="tipoveicolo">
+                <option value="p01" >fino a 700 kg</option>
+                <option value="p02">da 701 a 1500 kg</option>
+                <option value="p03">da 1501 a 3000 kg</option>
+                <option value="p04">da 3001 a 3500 kg</option>
+                <option value="p05">da 3501 a 4500 kg</option>
+                <option value="p06">da 4501 a 6000 kg</option>
+                <option value="p07">da 6001 a 8000 kg</option>
+                <option value="p08">oltre 8001 kg</option>
+              </select>
+              <div class="item-content">
+                <div class="item-inner">
+                  <!-- Select label -->
+                  <div class="item-title">portata netta</div>
+                  <!-- Selected value, not required -->
+                  <!--<div class="item-after">autovettura</div>-->
                 </div>
-            </div></div>
+              </div>
+            </a>
           </li>
-          <li><!--riga 4-->
+          <!--<li><!--riga 4
             <div class="item-content">
               <div class="item-inner"> 
                 <div class="item-title label">provincia</div>
@@ -72,12 +87,42 @@
                   <input type="number" style="text-align:right" placeholder="importo" name="opzione4"/>
                 </div>
             </div></div>
+          </li>-->
+          <!-- Smart select item -->
+          <li>
+            <!-- Additional "smart-select" class -->
+            <a href="#" class="item-link smart-select">
+              <!-- select -->
+              <select name="provincia" id="provincia">
+              {{#each props}}
+                <option value="{{@key}}">{{this}}</option>
+              {{/each}}
+              </select>
+              <div class="item-content">
+                <div class="item-inner">
+                  <!-- Select label -->
+                  <div class="item-title">Provincia</div>
+                </div>
+              </div>
+            </a>
           </li>
-
           <li>
             <div class="item-content">
               <div class="item-inner"> 
                 <div class="item-title label">cdp</div>
+                <div class="item-after"> 
+                    <div class="item-input">
+                      <label class="label-switch">
+                        <input type="checkbox"/>
+                        <div class="checkbox"></div>
+                      </label>
+                </div></div></div></div>
+          </li>
+          <!-- add here: codice per default check-->
+          <li>
+            <div class="item-content">
+              <div class="item-inner"> 
+                <div class="item-title label">trentennale</div>
                 <div class="item-after"> 
                     <div class="item-input">
                       <label class="label-switch">
@@ -97,7 +142,7 @@
                 </div>
             </div></div>
           </li>-->
-          <li><!--riga 6-->
+          <!--<li><!--riga 6
             <div class="item-content">
               <div class="item-inner"> 
                 <div class="item-title label">trentennale</div>
@@ -105,7 +150,7 @@
                   <input type="number" style="text-align:right" placeholder="importo" name="opzione6"/>
                 </div>
             </div></div>
-          </li>
+          </li>-->
           <li><!--riga 7-->
             <div class="item-content">
               <div class="item-inner"> 
@@ -176,36 +221,6 @@
                 </div></div></div></div>
           </li>
 
-          <!-- Smart select item -->
-          <li>
-            <!-- Additional "smart-select" class -->
-            <a href="#" class="item-link smart-select">
-              <!-- select -->
-              <select name="provincia" id="provincia">
-              <!--  <option value="mi" selected>milano</option>
-                <option value="rm">roma</option>
-                <option value="bg">bergamo</option> -->
-              <!--{{#each provaelenco}}
-                <option value="{{psg}}">{{prv}}</option>  
-              {{/each}}-->
-
-              {{#each props}}
-                <option value="{{@key}}">{{this}}</option>
-              {{/each}}
-
-
-              </select>
-              <div class="item-content">
-                <div class="item-inner">
-                  <!-- Select label -->
-                  <div class="item-title">Provincia</div>
-                  <!-- Selected value, not required -->
-                  <!--<div class="item-after">milano</div>-->
-                </div>
-              </div>
-            </a>
-          </li>
-          <!-- Another smart selects or list view elements -->
 
           <li>
             <a href="#" class="item-link list-button" id="mybutton_gn1" onclick="qualcosa()">usare</a>
