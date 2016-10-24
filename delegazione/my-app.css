@@ -71,22 +71,28 @@ body.with-panel-right-reveal .panel-overlay {
 }
 
 
-/* test */
-.picker-modal.smart-select-picker .page {
-  background: #000;
-}
-.picker-modal.smart-select-picker .toolbar:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: auto;
-  top: auto;
-  height: 1px;
-  width: 100%;
-  background-color: #000;
-  display: block;
-  z-index: 15;
-  -webkit-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
+@media all and (min-width: 768px) {
+  .page.smart-select-page .list-block {
+    margin-left: 15px;
+    margin-right: 15px;
+    border-radius: 7px;
+  }
+  .page.smart-select-page .list-block ul {
+    border-radius: 7px;
+  }
+  .page.smart-select-page .list-block ul:before {
+    display: none;
+  }
+  .page.smart-select-page .list-block ul:after {
+    display: none;
+  }
+  .page.smart-select-page .list-block li:first-child > label {
+    border-radius: 7px 7px 0 0;
+  }
+  .page.smart-select-page .list-block li:last-child > label {
+    border-radius: 0 0 7px 7px; 
+  }
+  .page.smart-select-page .list-block li:first-child:last-child > label {
+    border-radius: 7px;
+  }
 }
