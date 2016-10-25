@@ -181,6 +181,34 @@ myApp.onPageInit("gen2", function (page) {
     chkBox.checked = false;
 });
 
+myApp.onPageInit("impostazioni", function (page) {
+
+   // alert("open imp");
+    // var ul = document.getElementById("listaImpostazioniPra");
+    // var items = ul.getElementsByTagName("input");
+    // for (var i = 0; i < items.length; i++) {
+    //     var numero = items[i].value;
+    //     //alert(numero);
+    //     numero = parseFloat(numero);
+    //     var numero2 = numero.toFixed(2);
+    //     items[i].value = numero2;
+    //     //alert("fine " + numero);
+    // }
+
+    var pippo = 1.3;
+    alert(pippo);
+    pippo = parseFloat(pippo);
+    pippo = pippo.toFixed(2);
+    alert(pippo);
+    document.getElementById("acidir1").value = pippo;
+    var ops = document.getElementById("acidir1").value;
+    alert("ops " + ops);
+
+    
+});
+
+
+
 // funzioni generiche
 
 // funzione per resettare tutti gli elenchi
