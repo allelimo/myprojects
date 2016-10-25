@@ -195,18 +195,25 @@ myApp.onPageInit("impostazioni", function (page) {
     //     //alert("fine " + numero);
     // }
 
-    var pippo = 1.3;
-    alert(pippo);
-    pippo = parseFloat(pippo);
-    pippo = pippo.toFixed(2);
-    alert(pippo);
-    document.getElementById("acidir1").value = pippo;
-    var ops = document.getElementById("acidir1").value;
-    alert("ops " + ops);
+    // var pippo = 1.3;
+    // alert(pippo);
+    // pippo = parseFloat(pippo);
+    // pippo = pippo.toFixed(2);
+    // alert(pippo);
+    // document.getElementById("acidir1").value = pippo;
+    // var ops = document.getElementById("acidir1").value;
+    // alert("ops " + ops);
 
     
 });
 
+function testthis(element){
+    alert("testthis");
+    var pippo = document.getElementById("pradir").value;
+    pippo = pippo.toFixed(2);
+    document.getElementById("pradir").value = pippo;
+
+}
 
 
 // funzioni generiche
