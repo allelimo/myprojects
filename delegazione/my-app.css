@@ -71,7 +71,7 @@ body.with-panel-right-reveal .panel-overlay {
 }
 
 
-@media all and (min-width: 768px) {
+/*@media all and (min-width: 768px) {
   .page.smart-select-page .list-block {
     margin-left: 15px;
     margin-right: 15px;
@@ -95,4 +95,4 @@ body.with-panel-right-reveal .panel-overlay {
   .page.smart-select-page .list-block li:first-child:last-child > label {
     border-radius: 7px;
   }
-}
+}*/
