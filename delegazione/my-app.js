@@ -183,35 +183,42 @@ myApp.onPageInit("gen2", function (page) {
 
 myApp.onPageInit("impostazioni", function (page) {
 
-   // alert("open imp");
+    fListDecimali("listaImpostazioniPra");
+    fListDecimali("listaImpostazioniUmc");
+    fListDecimali("listaImpostazioniAci");
+    fListDecimali("listaImpostazioniPoste");
     // var ul = document.getElementById("listaImpostazioniPra");
     // var items = ul.getElementsByTagName("input");
     // for (var i = 0; i < items.length; i++) {
     //     var numero = items[i].value;
-    //     //alert(numero);
-    //     numero = parseFloat(numero);
-    //     var numero2 = numero.toFixed(2);
-    //     items[i].value = numero2;
-    //     //alert("fine " + numero);
+    //     numero = parseFloat(numero).toFixed(2);
+    //     items[i].value = numero;
     // }
-
-    // var pippo = 1.3;
-    // alert(pippo);
-    // pippo = parseFloat(pippo);
-    // pippo = pippo.toFixed(2);
-    // alert(pippo);
-    // document.getElementById("acidir1").value = pippo;
-    // var ops = document.getElementById("acidir1").value;
-    // alert("ops " + ops);
-
-    
 });
 
+function fListDecimali(nomelista) {
+
+    var ul = document.getElementById(nomelista);
+    var items = ul.getElementsByTagName("input");
+    for (var i = 0; i < items.length; i++) {
+        var numero = items[i].value;
+        numero = parseFloat(numero).toFixed(2);
+        items[i].value = numero;
+    }
+}
+
+
+
+
+
+
+
+
 function testthis(element){
-    alert("testthis");
-    var pippo = document.getElementById("pradir").value;
-    pippo = pippo.toFixed(2);
-    document.getElementById("pradir").value = pippo;
+    // alert("testthis");
+    // var pippo = document.getElementById("pradir").value;
+    // pippo = pippo.toFixed(2);
+    // document.getElementById("pradir").value = pippo;
 
 }
 
