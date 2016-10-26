@@ -181,6 +181,10 @@ myApp.onPageInit("gen2", function (page) {
     chkBox.checked = false;
 });
 
+// prima di aprire la pagina impostazioni
+// 1 - aggiungi i decimali ai valori memorizzati
+// 2 - disabilita tutti gli input 
+// 3 - disabilita il check per modifiche
 myApp.onPageInit("impostazioni", function (page) {
 
     fListDecimali("listaImpostazioniPra");
@@ -194,7 +198,45 @@ myApp.onPageInit("impostazioni", function (page) {
     //     numero = parseFloat(numero).toFixed(2);
     //     items[i].value = numero;
     // }
+
+    // 2 - loop per tutti gli input 
+    //document.getElementById("checkimpostazioni").className = "item-input disabled";
+    fDisabilitaInput("listaImpostazioniPra");
+    fDisabilitaInput("listaImpostazioniUmc");
+    fDisabilitaInput("listaImpostazioniAci");
+    fDisabilitaInput("listaImpostazioniPoste");
+
+    // 3 - disabilita checkbox
+    var chkBox = document.getElementById('checkimpostazioni');
+    chkBox.checked = false;
+
 });
+
+// toggle input box quando click su checkimpostazioni
+function fModificaImpostazioni() {
+    //document.getElementById("id_gen2_1").classList.toggle("disabled");
+    fDisabilitaInput("listaImpostazioniPra");
+    fDisabilitaInput("listaImpostazioniUmc");
+    fDisabilitaInput("listaImpostazioniAci");
+    fDisabilitaInput("listaImpostazioniPoste");
+}
+
+function fResetImpostazioni() {
+
+    fListReset("listaImpostazioniPra");
+    fListReset("listaImpostazioniUmc");
+    fListReset("listaImpostazioniAci");
+    fListReset("listaImpostazioniPoste");
+
+    myApp.formDeleteData("form_impostazioni_1");
+    myApp.formDeleteData("form_impostazioni_2");
+    myApp.formDeleteData("form_impostazioni_3");
+    myApp.formDeleteData("form_impostazioni_4");
+
+
+
+}
+
 
 function fListDecimali(nomelista) {
 
@@ -207,7 +249,19 @@ function fListDecimali(nomelista) {
     }
 }
 
+function fDisabilitaInput(nomelista) {
 
+    var ul = document.getElementById(nomelista);
+    var items = ul.getElementsByTagName("input");
+    for (var i = 0; i < items.length; i++) {
+        //var numero = items[i].value;
+        //numero = parseFloat(numero).toFixed(2);
+        //items[i].className = "item-input disabled";
+        items[i].classList.toggle("disabled");
+    }
+
+
+}
 
 
 
