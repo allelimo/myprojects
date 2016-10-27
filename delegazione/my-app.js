@@ -3,7 +3,7 @@ var myApp = new Framework7({
     init: false, //Disable App's automatic initialization
 
     smartSelectBackOnSelect: true,
-    
+
     precompileTemplates: true,
     // Enabled pages rendering using Template7
     template7Pages: true,
@@ -125,10 +125,10 @@ var myApp = new Framework7({
                 vr: "verona",
                 vs: "medio campidano",
                 vt: "viterbo",
-                vv: "vibo valenzia",            
+                vv: "vibo valenzia",
             }
         }
-    }      
+    }
 });
 
 //Now we add our callback for initial page
@@ -136,11 +136,11 @@ myApp.onPageInit('index', function (page) {
     var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
     if(storedData) {
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-        var lippa = JSON.parse(cippa);  
+        var lippa = JSON.parse(cippa);
         dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
     }
 });
- 
+
 //And now we initialize app
 myApp.init();
 
@@ -168,8 +168,8 @@ myApp.onPageInit("gen1", function (page) {
     var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
     if(storedData) {
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-        var lippa = JSON.parse(cippa);  
-        var myglobal1 = lippa.gen2_1; 
+        var lippa = JSON.parse(cippa);
+        var myglobal1 = lippa.gen2_1;
         document.getElementById("id_gen1_1").value = myglobal1;
     }
 });
@@ -183,7 +183,7 @@ myApp.onPageInit("gen2", function (page) {
 
 // prima di aprire la pagina impostazioni
 // 1 - aggiungi i decimali ai valori memorizzati
-// 2 - disabilita tutti gli input 
+// 2 - disabilita tutti gli input
 // 3 - disabilita il check per modifiche
 myApp.onPageInit("impostazioni", function (page) {
 
@@ -199,7 +199,7 @@ myApp.onPageInit("impostazioni", function (page) {
     //     items[i].value = numero;
     // }
 
-    // 2 - loop per tutti gli input 
+    // 2 - loop per tutti gli input
     //document.getElementById("checkimpostazioni").className = "item-input disabled";
     fDisabilitaInput("listaImpostazioniPra");
     fDisabilitaInput("listaImpostazioniUmc");
@@ -257,16 +257,16 @@ function fDisabilitaInput(nomelista) {
         //var numero = items[i].value;
         //numero = parseFloat(numero).toFixed(2);
         //items[i].className = "item-input disabled";
-        //items[i].classList.toggle("disabled");
+        items[i].classList.toggle("disabled");
 
-    var chkBox = document.getElementById('checkimpostazioni');
-    if (chkBox.checked) {
-        //document.getElementById("id_gen2_1").className="item-input";
-        items[i].className="item-input";
-        } else {
-        //document.getElementById("id_gen2_1").className="item-input disabled";
-        items[i].className="item-input disabled";
-    }
+    // var chkBox = document.getElementById('checkimpostazioni');
+    // if (chkBox.checked) {
+    //     //document.getElementById("id_gen2_1").className="item-input";
+    //     items[i].className="item-input";
+    //     } else {
+    //     //document.getElementById("id_gen2_1").className="item-input disabled";
+    //     items[i].className="item-input disabled";
+    // }
 
 
 
@@ -306,7 +306,7 @@ function fGenericTotale(nomelista, idtotale){
 var ul = document.getElementById(nomelista);
 var items = ul.getElementsByTagName("input");
 var totaleValoreAssegni = 0;
-    for (var i = 0; i < items.length -1; i++) { 
+    for (var i = 0; i < items.length -1; i++) {
         var a = parseFloat(items[i].value);
         if (isNaN(a) === true){
             a = 0;
@@ -319,23 +319,23 @@ var totaleValoreAssegni = 0;
 // da qui: codice per le pagine
 // pagina bollettini
 function fBollettiniImporto(){
-    var ul = document.getElementById("listaBollettini");    
-    var items = ul.getElementsByTagName("input"); 
+    var ul = document.getElementById("listaBollettini");
+    var items = ul.getElementsByTagName("input");
     var importi = [10.20, 0, 16, 0, 32, 0, 13.58, 0, 22.26, 0, 41.78, 0, 5.1, 0, 18.37, 0, 24.74, 0, 19.32, 0, 41.37, 0];
     //var dirittiPosta = 1.78;
-    var totaleBollettini = 0;                  
+    var totaleBollettini = 0;
     for (var i = 0; i < 22; i = i + 2) {
         var a = items[i].value;
         var b = importi[i];
         var c = a * (b + dirittiPosta);
         var d = parseFloat(c);
-        if (d === 0) { 
+        if (d === 0) {
             items[i+1].value = null;
             } else if (d !== null) {
             items[i+1].value = d.toFixed(2);
         }
         totaleBollettini += d;
-    }        
+    }
     // scrivi i totale sull'ultima riga'
     document.getElementById("idtot").value = totaleBollettini.toFixed(2);
 }
@@ -367,18 +367,18 @@ function fContantiTotale(){
     var totaleContanti = 0;
     for (var i = 0; i < 14; i = i + 2) {                                                     // anche qui, i < 14 per fermarsi prima di ultima riga
         // valore di input                                                                  // il codice per tutti gli elementi sarebbe
-        var a = items[i].value;                                                             // i < items.length                  
+        var a = items[i].value;                                                             // i < items.length
         var b = importi[i]; // array. non serve "value"
         var c = a * b;
         // calcola il totale
         var d = parseFloat(c);
-        if (d === 0) { 
+        if (d === 0) {
             items[i+1].value = null;
             } else if (d !== null) {
             items[i+1].value = d;
         }
         totaleContanti += d;
-    }        
+    }
     // scrivi i totale sull'ultima riga'
     document.getElementById("idtotcont").value = totaleContanti;
 }
