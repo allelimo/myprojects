@@ -257,7 +257,19 @@ function fDisabilitaInput(nomelista) {
         //var numero = items[i].value;
         //numero = parseFloat(numero).toFixed(2);
         //items[i].className = "item-input disabled";
-        items[i].classList.toggle("disabled");
+        //items[i].classList.toggle("disabled");
+
+    var chkBox = document.getElementById('checkimpostazioni');
+    if (chkBox.checked) {
+        //document.getElementById("id_gen2_1").className="item-input";
+        items[i].className="item-input";
+        } else {
+        //document.getElementById("id_gen2_1").className="item-input disabled";
+        items[i].className="item-input disabled";
+    }
+
+
+
     }
 
 
