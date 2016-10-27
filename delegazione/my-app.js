@@ -133,11 +133,14 @@ var myApp = new Framework7({
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
-    var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
+    var storedData = myApp.formGetData('form_generic');  // il form della seconda pagina form_gen2
     if(storedData) {
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
+        //myApp.alert(cippa);
         var lippa = JSON.parse(cippa);
         dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
+        //var uella = lippa.checkcdp;
+        //alert(uella);
     }
 });
 
@@ -184,32 +187,21 @@ myApp.onPageInit("gen2", function (page) {
 // prima di aprire la pagina impostazioni
 // 1 - aggiungi i decimali ai valori memorizzati
 // 2 - disabilita tutti gli input
-// 3 - disabilita il check per modifiche
+// 3 - check per modifiche: off
 myApp.onPageInit("impostazioni", function (page) {
-
+    // 1
     fListDecimali("listaImpostazioniPra");
     fListDecimali("listaImpostazioniUmc");
     fListDecimali("listaImpostazioniAci");
     fListDecimali("listaImpostazioniPoste");
-    // var ul = document.getElementById("listaImpostazioniPra");
-    // var items = ul.getElementsByTagName("input");
-    // for (var i = 0; i < items.length; i++) {
-    //     var numero = items[i].value;
-    //     numero = parseFloat(numero).toFixed(2);
-    //     items[i].value = numero;
-    // }
-
     // 2 - loop per tutti gli input
-    //document.getElementById("checkimpostazioni").className = "item-input disabled";
     fDisabilitaInput("listaImpostazioniPra");
     fDisabilitaInput("listaImpostazioniUmc");
     fDisabilitaInput("listaImpostazioniAci");
     fDisabilitaInput("listaImpostazioniPoste");
-
-    // 3 - disabilita checkbox
+    // 3 - checkbox: off
     var chkBox = document.getElementById('checkimpostazioni');
     chkBox.checked = false;
-
 });
 
 // toggle input box quando click su checkimpostazioni
@@ -222,24 +214,17 @@ function fModificaImpostazioni() {
 }
 
 function fResetImpostazioni() {
-
     fListReset("listaImpostazioniPra");
     fListReset("listaImpostazioniUmc");
     fListReset("listaImpostazioniAci");
     fListReset("listaImpostazioniPoste");
-
     myApp.formDeleteData("form_impostazioni_1");
     myApp.formDeleteData("form_impostazioni_2");
     myApp.formDeleteData("form_impostazioni_3");
     myApp.formDeleteData("form_impostazioni_4");
-
-
-
 }
 
-
 function fListDecimali(nomelista) {
-
     var ul = document.getElementById(nomelista);
     var items = ul.getElementsByTagName("input");
     for (var i = 0; i < items.length; i++) {
@@ -250,29 +235,11 @@ function fListDecimali(nomelista) {
 }
 
 function fDisabilitaInput(nomelista) {
-
     var ul = document.getElementById(nomelista);
     var items = ul.getElementsByTagName("input");
     for (var i = 0; i < items.length; i++) {
-        //var numero = items[i].value;
-        //numero = parseFloat(numero).toFixed(2);
-        //items[i].className = "item-input disabled";
         items[i].classList.toggle("disabled");
-
-    // var chkBox = document.getElementById('checkimpostazioni');
-    // if (chkBox.checked) {
-    //     //document.getElementById("id_gen2_1").className="item-input";
-    //     items[i].className="item-input";
-    //     } else {
-    //     //document.getElementById("id_gen2_1").className="item-input disabled";
-    //     items[i].className="item-input disabled";
-    // }
-
-
-
     }
-
-
 }
 
 
