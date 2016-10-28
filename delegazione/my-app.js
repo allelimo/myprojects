@@ -133,15 +133,27 @@ var myApp = new Framework7({
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
-    var storedData = myApp.formGetData('form_generic');  // il form della seconda pagina form_gen2
+    // var storedData = myApp.formGetData('form_generic');  // il form della seconda pagina form_gen2
+    // if(storedData) {
+    //     var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
+    //     //myApp.alert(cippa);
+    //     var lippa = JSON.parse(cippa);
+    //     dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
+    //     //var uella = lippa.checkcdp;
+    //     //alert(uella);
+    // }
+
+//leggi le impostazioni da pagina impostazioni
+    var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
     if(storedData) {
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
         //myApp.alert(cippa);
         var lippa = JSON.parse(cippa);
-        dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
+        dirittiPosta = parseFloat(lippa.posimp); // variabile globale
         //var uella = lippa.checkcdp;
-        //alert(uella);
+        alert(dirittiPosta);
     }
+
 });
 
 //And now we initialize app
@@ -164,7 +176,8 @@ var mainView = myApp.addView('.view-main', {
 "use strict";
 
 // variabileglobale
-window.dirittiPosta = 1.78;
+window.dirittiPosta = null; // o valore di default?
+//window.selProvincia = null;
 
 // prima di aprire pagina gen1
 myApp.onPageInit("gen1", function (page) {
@@ -241,6 +254,30 @@ function fDisabilitaInput(nomelista) {
         items[i].classList.toggle("disabled");
     }
 }
+
+
+// pagna generic - futura pdp
+// prendi i valori da impostazioni on init
+// button -> predni i valori della pagina
+myApp.onPageInit("generic", function (page) {
+    
+     // da pagina 
+    var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
+    if(storedData) {
+        var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
+        //myApp.alert(cippa);
+        var lippa = JSON.parse(cippa);
+        dirittiPosta = parseFloat(lippa.posimp); // variabile globale
+        //var uella = lippa.checkcdp;
+        alert(dirittiPosta);
+    }
+
+    
+    
+    // 1
+});
+
+
 
 
 
@@ -429,8 +466,8 @@ function qualcosa(){
 // alert(round5(iptarrot));
 
 // test array province
-var province = ["mi", "bo", "to", "ve"];
-alert(province.indexOf("bo"));
+// var province = ["mi", "bo", "to", "ve"];
+// alert(province.indexOf("bo"));
 //alert(province.indexOf("va"));
 
 
@@ -443,6 +480,22 @@ var test = $$("select#provincia").val();
 //         myApp.alert(test);
          alert(test);
     }
+
+var province10 = ["mi", "bo", "to", "ve"];
+var province20 = ["mb", "fe", "rm", "vi"];
+var provinciaselezionata = null;
+
+if (province10.indexOf(test) > -1 ) {
+    provinciaselezionata = 1.1;
+} else if (province20.indexOf(test) > -1 ) {
+    provinciaselezionata = 1.2;
+} else {
+    provinciaselezionata = 1.3;
+}
+
+alert(provinciaselezionata);
+
+
 
 //alert("value " + abcdef);
 
