@@ -535,7 +535,7 @@ if (province00.indexOf(test) > -1 ) {
     provinciaselezionata = 1.3;
 }
 
-alert(provinciaselezionata);
+// alert(provinciaselezionata);
 
 
 
@@ -543,7 +543,6 @@ alert(provinciaselezionata);
 
 
 var test2 = $$("select#tipoveicolo").val();
-alert(test2);
 
 // var iptbase = 150.81;
 // var iptcoeff = 3.51;
@@ -562,12 +561,13 @@ alert(test2);
 // iptarrot = iptlorda.toFixed(2);
 
 
-
+// manca: controllo cdp
+// controllo epoca
+// controllo ipt autocarri se varia con provincia
+// controllo se speciali è corretto
 var iptBase = 150.81;
 var iptCoeff = 3.51;
-
-
-
+var portataNetta = $$("select#portatanetta").val();
 var importoIpt = null;
 var valoreKw = document.getElementById("alphaopzione2").value;
 
@@ -575,30 +575,21 @@ if (test2 == "av") {
     if(valoreKw < 54) {
         importoIpt = (iptBase * provinciaselezionata);
         importoIpt = Math.floor(importoIpt);
-        alert(importoIpt);
         } else {
             importoIpt = valoreKw * iptCoeff * provinciaselezionata;
             importoIpt = Math.ceil(importoIpt);
-            alert(importoIpt);
         }
     } else if (test2 === "mc") {
         importoIpt = 0;
         alert(importoIpt);
     } else if (test2 === "ac") {
-        importoIpt = 123;
-        alert(importoIpt);
+        importoIpt = portataNetta;
     } else if (test2 === "sp") {
         importoIpt = (valoreKw * iptCoeff * provinciaselezionata) / 4;
         importoIpt = Math.ceil(importoIpt);
-        alert(importoIpt);
     }
 
-
-
-
-document.getElementById("opzione6").value = importoIpt;
-
-
+    document.getElementById("opzione6").value = importoIpt;
 }
 
 function round5(x){
