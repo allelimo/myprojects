@@ -283,7 +283,7 @@ myApp.onPageInit("temp01", function (page) {
         var bolloPra = parseFloat(lippa1.praimp); 
         //var uella = lippa.checkcdp;
         //alert(dirittiPra + bolloPra);
-        document.getElementById("opzione7").value = (dirittiPra + bolloPra);
+        document.getElementById("opzione7").value = (dirittiPra + (bolloPra *2));
     }
 
     var storedData2 = myApp.formGetData('form_impostazioni_2');  // il form della seconda pagina form_gen2
@@ -292,7 +292,7 @@ myApp.onPageInit("temp01", function (page) {
         var lippa2 = JSON.parse(cippa2);
         var dirittiUmc = parseFloat(lippa2.umcdir); 
         var bolloUmc = parseFloat(lippa2.umcimp); 
-        document.getElementById("opzione8").value = (dirittiUmc + bolloUmc + dirittiPosta + dirittiPosta);
+        document.getElementById("opzione8").value = (dirittiUmc + bolloUmc + (dirittiPosta * 2));
     }
 
     var storedData3 = myApp.formGetData('form_impostazioni_3');  // il form della seconda pagina form_gen2
@@ -542,10 +542,61 @@ alert(provinciaselezionata);
 //alert("value " + abcdef);
 
 
-alert(province.indexOf(test));
-
 var test2 = $$("select#tipoveicolo").val();
 alert(test2);
+
+// var iptbase = 150.81;
+// var iptcoeff = 3.51;
+
+// if(kw < 54) {
+
+//     iptlorda = iptbase * iptmilano;
+//     iptlorda = Math.floor(iptlorda);
+//     iptarrot = iptlorda.toFixed(2);
+// } else {
+
+
+// iptlorda = kw * iptcoeff * iptmilano;
+// alert(iptlorda);
+// iptlorda = Math.ceil(iptlorda);
+// iptarrot = iptlorda.toFixed(2);
+
+
+
+var iptBase = 150.81;
+var iptCoeff = 3.51;
+
+
+
+var importoIpt = null;
+var valoreKw = document.getElementById("alphaopzione2").value;
+
+if (test2 == "av") {
+    if(valoreKw < 54) {
+        importoIpt = (iptBase * provinciaselezionata);
+        importoIpt = Math.floor(importoIpt);
+        alert(importoIpt);
+        } else {
+            importoIpt = valoreKw * iptCoeff * provinciaselezionata;
+            importoIpt = Math.ceil(importoIpt);
+            alert(importoIpt);
+        }
+    } else if (test2 === "mc") {
+        importoIpt = 0;
+        alert(importoIpt);
+    } else if (test2 === "ac") {
+        importoIpt = 123;
+        alert(importoIpt);
+    } else if (test2 === "sp") {
+        importoIpt = (valoreKw * iptCoeff * provinciaselezionata) / 4;
+        importoIpt = Math.ceil(importoIpt);
+        alert(importoIpt);
+    }
+
+
+
+
+document.getElementById("opzione6").value = importoIpt;
 
 
 }
