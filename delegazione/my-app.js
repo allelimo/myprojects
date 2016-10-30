@@ -10,7 +10,7 @@ var myApp = new Framework7({
     // Specify Template7 data for pages
     template7Data: {
         // Will be applied for page with "projects.html" url
-        'url:generic.html': {
+        'url:passaggi.html': {
         //     provaelenco: [
         //         { psg: "mi", prv: "milano" },{ psg: "bo", prv: "bologna"},{ psg: "bg", prv: "bergamo" },{ psg: "sa", prv: "salerno" },{ psg: "me", prv: "messina" },
         //     ],
@@ -151,7 +151,7 @@ myApp.onPageInit('index', function (page) {
         var lippa = JSON.parse(cippa);
         dirittiPosta = parseFloat(lippa.posimp); // variabile globale
         //var uella = lippa.checkcdp;
-        alert(dirittiPosta);
+        alert("to fixed test");
     }
 
 });
@@ -256,10 +256,10 @@ function fDisabilitaInput(nomelista) {
 }
 
 
-// pagna generic - futura pdp
+// pagna passaggi 
 // prendi i valori da impostazioni on init
 // button -> predni i valori della pagina
-myApp.onPageInit("temp01", function (page) {
+myApp.onPageInit("passaggi", function (page) {
     
      // da pagina 
     var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
@@ -267,7 +267,7 @@ myApp.onPageInit("temp01", function (page) {
         var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
         //myApp.alert(cippa);
         var lippa = JSON.parse(cippa);
-        dirittiPosta = parseFloat(lippa.posimp); // variabile globale
+        dirittiPosta = parseFloat(lippa.posimp).toFixed(2); // variabile globale
         //var uella = lippa.checkcdp;
         alert(dirittiPosta);
     }
@@ -283,7 +283,10 @@ myApp.onPageInit("temp01", function (page) {
         var bolloPra = parseFloat(lippa1.praimp); 
         //var uella = lippa.checkcdp;
         //alert(dirittiPra + bolloPra);
-        document.getElementById("opzione7").value = (dirittiPra + (bolloPra *2));
+        var totPra = (dirittiPra + (bolloPra * 2)).toFixed(2);
+        alert(totPra);
+        //document.getElementById("passPra").value = (dirittiPra + (bolloPra * 2)).toFixed(2);
+        document.getElementById("passPra").value = totPra;
     }
 
     var storedData2 = myApp.formGetData('form_impostazioni_2');  // il form della seconda pagina form_gen2
@@ -292,7 +295,8 @@ myApp.onPageInit("temp01", function (page) {
         var lippa2 = JSON.parse(cippa2);
         var dirittiUmc = parseFloat(lippa2.umcdir); 
         var bolloUmc = parseFloat(lippa2.umcimp); 
-        document.getElementById("opzione8").value = (dirittiUmc + bolloUmc + (dirittiPosta * 2));
+        document.getElementById("passUmc").value = (dirittiUmc + bolloUmc + (dirittiPosta * 2)).toFixed(2);
+        alert((dirittiUmc + bolloUmc + (dirittiPosta * 2)).toFixed(2));
     }
 
     var storedData3 = myApp.formGetData('form_impostazioni_3');  // il form della seconda pagina form_gen2
@@ -303,8 +307,8 @@ myApp.onPageInit("temp01", function (page) {
         var dirittiAci2 = parseFloat(lippa3.acidir2); 
         var dirittiAci3 = parseFloat(lippa3.acidir3); 
 
-        document.getElementById("opzione9").value = (dirittiAci1 + dirittiAci2 + dirittiAci3);
-        document.getElementById("opzione10").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22);
+        document.getElementById("passDiritti").value = (dirittiAci1 + dirittiAci2 + dirittiAci3);
+        document.getElementById("passIva").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22);
 
     }
     
@@ -589,7 +593,7 @@ if (test2 == "av") {
         importoIpt = Math.ceil(importoIpt);
     }
 
-    document.getElementById("opzione6").value = importoIpt;
+    document.getElementById("passIpt").value = importoIpt;
 }
 
 function round5(x){
