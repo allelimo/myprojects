@@ -133,29 +133,15 @@ var myApp = new Framework7({
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
-    // var storedData = myApp.formGetData('form_generic');  // il form della seconda pagina form_gen2
-    // if(storedData) {
-    //     var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-    //     //myApp.alert(cippa);
-    //     var lippa = JSON.parse(cippa);
-    //     dirittiPosta = parseFloat(lippa.gen2_1); // variabile globale
-    //     //var uella = lippa.checkcdp;
-    //     //alert(uella);
-    // }
-
 //leggi le impostazioni da pagina impostazioni
-    var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
+    var storedData = myApp.formGetData('form_impostazioni_4');
     if(storedData) {
-        var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-        //myApp.alert(cippa);
-        var lippa = JSON.parse(cippa);
-        dirittiPosta = parseFloat(lippa.posimp); // variabile globale
-        //var uella = lippa.checkcdp;
-        alert("to fixed test");
+        var jsonstring = JSON.stringify(storedData); 
+        var jsonvalues = JSON.parse(jsonstring);
+        dirittiPosta = parseFloat(jsonvalues.posimp); // variabile globale perchè devo usarla in più pagine/funzioni
+        alert("ecchecazzo");
     }
-
 });
-
 //And now we initialize app
 myApp.init();
 
@@ -179,6 +165,11 @@ var mainView = myApp.addView('.view-main', {
 window.dirittiPosta = null; // o valore di default?
 //window.selProvincia = null;
 
+
+// ============================= //
+// inizializzazione delle pagine //
+// ============================= //
+
 // prima di aprire pagina gen1
 myApp.onPageInit("gen1", function (page) {
     var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
@@ -197,12 +188,16 @@ myApp.onPageInit("gen2", function (page) {
     chkBox.checked = false;
 });
 
+// ============================= //
+// pagina impostazioni           //
+// ============================= //
+
 // prima di aprire la pagina impostazioni
 // 1 - aggiungi i decimali ai valori memorizzati
 // 2 - disabilita tutti gli input
 // 3 - check per modifiche: off
 myApp.onPageInit("impostazioni", function (page) {
-    // 1
+    // 1 - aggiungi i decimali
     fListDecimali("listaImpostazioniPra");
     fListDecimali("listaImpostazioniUmc");
     fListDecimali("listaImpostazioniAci");
@@ -219,7 +214,6 @@ myApp.onPageInit("impostazioni", function (page) {
 
 // toggle input box quando click su checkimpostazioni
 function fModificaImpostazioni() {
-    //document.getElementById("id_gen2_1").classList.toggle("disabled");
     fDisabilitaInput("listaImpostazioniPra");
     fDisabilitaInput("listaImpostazioniUmc");
     fDisabilitaInput("listaImpostazioniAci");
@@ -255,32 +249,35 @@ function fDisabilitaInput(nomelista) {
     }
 }
 
+// ============================= //
+// pagina passaggi               //
+// ============================= //
 
-// pagna passaggi 
 // prendi i valori da impostazioni on init
-// button -> predni i valori della pagina
+// button -> prendi i valori della pagina
 myApp.onPageInit("passaggi", function (page) {
     
-     // da pagina 
-    var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
-    if(storedData) {
-        var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-        //myApp.alert(cippa);
-        var lippa = JSON.parse(cippa);
-        dirittiPosta = parseFloat(lippa.posimp).toFixed(2); // variabile globale
-        //var uella = lippa.checkcdp;
-        alert(dirittiPosta);
-    }
+    // - disabilitata è già nella pagina iniziale 
+    
+    // var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
+    // if(storedData) {
+    //     var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
+    //     //myApp.alert(cippa);
+    //     var lippa = JSON.parse(cippa);
+    //     dirittiPosta = parseFloat(lippa.posimp).toFixed(2); // variabile globale
+    //     //var uella = lippa.checkcdp;
+    //     alert(dirittiPosta);
+    //}
 
      // da pagina impostazioni 
     var storedData1 = myApp.formGetData('form_impostazioni_1');  // il form della seconda pagina form_gen2
     if(storedData1) {
         //alert("preso2");
-        var cippa1 = JSON.stringify(storedData1); // qui ci sono tutte le coppie nome/valore
+        var jsonstring1 = JSON.stringify(storedData1); // qui ci sono tutte le coppie nome/valore
         //myApp.alert(cippa);
-        var lippa1 = JSON.parse(cippa1);
-        var dirittiPra = parseFloat(lippa1.pradir); 
-        var bolloPra = parseFloat(lippa1.praimp); 
+        var jsonvalues1 = JSON.parse(jsonstring1);
+        var dirittiPra = parseFloat(jsonvalues1.pradir); 
+        var bolloPra = parseFloat(jsonvalues1.praimp); 
         //var uella = lippa.checkcdp;
         //alert(dirittiPra + bolloPra);
         var totPra = (dirittiPra + (bolloPra * 2)).toFixed(2);
@@ -291,36 +288,25 @@ myApp.onPageInit("passaggi", function (page) {
 
     var storedData2 = myApp.formGetData('form_impostazioni_2');  // il form della seconda pagina form_gen2
     if(storedData2) {
-        var cippa2 = JSON.stringify(storedData2); // qui ci sono tutte le coppie nome/valore
-        var lippa2 = JSON.parse(cippa2);
-        var dirittiUmc = parseFloat(lippa2.umcdir); 
-        var bolloUmc = parseFloat(lippa2.umcimp); 
+        var jsonstring2 = JSON.stringify(storedData2); // qui ci sono tutte le coppie nome/valore
+        var jsonvalues2 = JSON.parse(jsonstring2);
+        var dirittiUmc = parseFloat(jsonvalues2.umcdir); 
+        var bolloUmc = parseFloat(jsonvalues2.umcimp); 
         document.getElementById("passUmc").value = (dirittiUmc + bolloUmc + (dirittiPosta * 2)).toFixed(2);
-        alert((dirittiUmc + bolloUmc + (dirittiPosta * 2)).toFixed(2));
+        //alert((dirittiUmc + bolloUmc + (dirittiPosta * 2)).toFixed(2));
     }
 
     var storedData3 = myApp.formGetData('form_impostazioni_3');  // il form della seconda pagina form_gen2
     if(storedData3) {
-        var cippa3 = JSON.stringify(storedData3); // qui ci sono tutte le coppie nome/valore
-        var lippa3 = JSON.parse(cippa3);
-        var dirittiAci1 = parseFloat(lippa3.acidir1); 
-        var dirittiAci2 = parseFloat(lippa3.acidir2); 
-        var dirittiAci3 = parseFloat(lippa3.acidir3); 
-
-        document.getElementById("passDiritti").value = (dirittiAci1 + dirittiAci2 + dirittiAci3);
-        document.getElementById("passIva").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22);
-
+        var jsonstring3 = JSON.stringify(storedData3); // qui ci sono tutte le coppie nome/valore
+        var jsonvalues3 = JSON.parse(jsonstring3);
+        var dirittiAci1 = parseFloat(jsonvalues3.acidir1); 
+        var dirittiAci2 = parseFloat(jsonvalues3.acidir2); 
+        var dirittiAci3 = parseFloat(jsonvalues3.acidir3); 
+        document.getElementById("passDiritti").value = (dirittiAci1 + dirittiAci2 + dirittiAci3).toFixed(2);
+        document.getElementById("passIva").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22).toFixed(2);
     }
-    
-
-
-    // 1
 });
-
-
-
-
-
 
 
 
@@ -333,7 +319,9 @@ function testthis(element){
 }
 
 
-// funzioni generiche
+// ============================= //
+// funzioni generiche            //
+// ============================= //
 
 // funzione per resettare tutti gli elenchi
 // usare con nome della lista come "string"
@@ -360,8 +348,13 @@ var totaleValoreAssegni = 0;
     document.getElementById(idtotale).value = totaleValoreAssegni.toFixed(2);
 }
 
-// da qui: codice per le pagine
-// pagina bollettini
+// ============================= //
+// codice per pagine             //
+// ============================= //
+
+// ============================= //
+// pagina bollettini             //
+// ============================= //
 function fBollettiniImporto(){
     var ul = document.getElementById("listaBollettini");
     var items = ul.getElementsByTagName("input");
@@ -403,7 +396,9 @@ function fBollettiniReset(){
     myApp.formDeleteData("form_bollettini_b");
 }
 
-// pagina contanti
+// ============================= //
+// pagina contanti               //
+// ============================= //
 function fContantiTotale(){
     var ul = document.getElementById("listaContanti");                                      // necessario dare un id alla lista
     var items = ul.getElementsByTagName("input");                                           // recuperare i valori di input
@@ -432,7 +427,9 @@ function fContantiReset(){
     myApp.formDeleteData("form_contanti");
 }
 
-// pagina assegni 1 e 2
+// ============================= //
+// pagina assegni 1 e 2          //
+// ============================= //
 function fAssegniTotale(){
     fGenericTotale("listaAssegni", "assegnoTotale");
 }
