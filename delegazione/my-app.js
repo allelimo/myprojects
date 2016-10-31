@@ -131,6 +131,15 @@ var myApp = new Framework7({
     }
 });
 
+// dichiarazione per tutto il file
+"use strict";
+
+// variabileglobale
+window.dirittiPosta = null; // o valore di default?
+//window.selProvincia = null;
+
+
+
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
 //leggi le impostazioni da pagina impostazioni
@@ -139,7 +148,7 @@ myApp.onPageInit('index', function (page) {
         var jsonstring = JSON.stringify(storedData); 
         var jsonvalues = JSON.parse(jsonstring);
         dirittiPosta = parseFloat(jsonvalues.posimp); // variabile globale perchè devo usarla in più pagine/funzioni
-        alert("ecchecazzo");
+        alert(dirittiPosta);
     }
 });
 //And now we initialize app
@@ -157,13 +166,6 @@ var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
     dynamicNavbar: true
 });
-
-// dichiarazione per tutto il file
-"use strict";
-
-// variabileglobale
-window.dirittiPosta = null; // o valore di default?
-//window.selProvincia = null;
 
 
 // ============================= //
@@ -253,29 +255,40 @@ function fDisabilitaInput(nomelista) {
 // pagina passaggi               //
 // ============================= //
 
-// prendi i valori da impostazioni on init
-// button -> prendi i valori della pagina
-myApp.onPageInit("passaggi", function (page) {
-    
-    // - disabilitata è già nella pagina iniziale 
-    
-    // var storedData = myApp.formGetData('form_impostazioni_4');  // il form della seconda pagina form_gen2
-    // if(storedData) {
-    //     var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-    //     //myApp.alert(cippa);
-    //     var lippa = JSON.parse(cippa);
-    //     dirittiPosta = parseFloat(lippa.posimp).toFixed(2); // variabile globale
-    //     //var uella = lippa.checkcdp;
-    //     alert(dirittiPosta);
-    //}
 
+function fModificaCdp() {
+    var notepra = 2;
     var chkcdp = document.getElementById("checkcdp");
-    var notepra = 3;
     if (chkcdp.checked) {
         notepra = 2;
     }
-    // else {
-    // }
+    else {
+        notepra = 3;
+    }
+    // presa da sotto, inizializzazione pagina passaggi
+    var storedData1 = myApp.formGetData('form_impostazioni_1');  // il form della seconda pagina form_gen2
+    if(storedData1) {
+        var jsonstring1 = JSON.stringify(storedData1);
+        var jsonvalues1 = JSON.parse(jsonstring1);
+        var dirittiPra = parseFloat(jsonvalues1.pradir); 
+        var bolloPra = parseFloat(jsonvalues1.praimp); 
+        var totPra = (dirittiPra + (bolloPra * notepra)).toFixed(2);
+        document.getElementById("passPra").value = totPra;
+    }
+}
+
+// prendi i valori da impostazioni on init
+// button -> prendi i valori della pagina
+myApp.onPageInit("passaggi", function (page) {
+
+// default: cdp checked, 30anni unchecked
+    var chkcdp = document.getElementById("checkcdp");
+    chkcdp.checked = true;
+    var chk30anni = document.getElementById("check30anni");
+    chk30anni.checked = false;
+    // deafult:
+    var notepra = 2;
+
 
      // da pagina impostazioni 
     var storedData1 = myApp.formGetData('form_impostazioni_1');  // il form della seconda pagina form_gen2
@@ -289,7 +302,7 @@ myApp.onPageInit("passaggi", function (page) {
         //var uella = lippa.checkcdp;
         //alert(dirittiPra + bolloPra);
         var totPra = (dirittiPra + (bolloPra * notepra)).toFixed(2);
-        alert(totPra);
+        //alert(totPra);
         //document.getElementById("passPra").value = (dirittiPra + (bolloPra * 2)).toFixed(2);
         document.getElementById("passPra").value = totPra;
     }
@@ -523,7 +536,7 @@ var test = $$("select#provincia").val();
     if (test.length){
 //		 myApp.alert("select exists");
 //         myApp.alert(test);
-         alert(test);
+         //alert(test);
     }
 
 var province00 = ["ao","bz","tn"];
@@ -615,6 +628,21 @@ if (test2 == "av") {
     }
 
     document.getElementById("passIpt").value = importoIpt;
+
+
+// mettiamo insieme i valori:
+
+var impIpt = parseFloat(importoIpt);
+var impPra = parseFloat(document.getElementById("passPra").value);
+var impUmc = parseFloat(document.getElementById("passUmc").value);
+var impDiritti = parseFloat(document.getElementById("passDiritti").value);
+var impIva = parseFloat(document.getElementById("passIva").value);
+var totale = (impIpt + impPra + impUmc + impDiritti + impIva);
+
+totale = round5(totale);
+
+document.getElementById("opzioneTotale").value = totale.toFixed(2);
+
 }
 
 function round5(x){
