@@ -570,7 +570,7 @@ var iptBase = 150.81;
 var iptCoeff = 3.51;
 var portataNetta = $$("select#portatanetta").val();
 var importoIpt = null;
-var valoreKw = document.getElementById("alphaopzione2").value;
+var valoreKw = document.getElementById("numerokw").value;
 
 if (test2 == "av") {
     if(valoreKw < 54) {
@@ -584,7 +584,15 @@ if (test2 == "av") {
         importoIpt = 0;
         alert(importoIpt);
     } else if (test2 === "ac") {
-        importoIpt = portataNetta;
+        importoIpt = portataNetta * provinciaselezionata;
+        importoIpt = Math.round(importoIpt);
+        alert(importoIpt);
+
+
+        
+        //importoIpt = portataNetta;
+
+
     } else if (test2 === "sp") {
         importoIpt = (valoreKw * iptCoeff * provinciaselezionata) / 4;
         importoIpt = Math.ceil(importoIpt);
