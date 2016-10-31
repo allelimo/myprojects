@@ -269,6 +269,14 @@ myApp.onPageInit("passaggi", function (page) {
     //     alert(dirittiPosta);
     //}
 
+    var chkcdp = document.getElementById("checkcdp");
+    var notepra = 3;
+    if (chkcdp.checked) {
+        notepra = 2;
+    }
+    // else {
+    // }
+
      // da pagina impostazioni 
     var storedData1 = myApp.formGetData('form_impostazioni_1');  // il form della seconda pagina form_gen2
     if(storedData1) {
@@ -280,7 +288,7 @@ myApp.onPageInit("passaggi", function (page) {
         var bolloPra = parseFloat(jsonvalues1.praimp); 
         //var uella = lippa.checkcdp;
         //alert(dirittiPra + bolloPra);
-        var totPra = (dirittiPra + (bolloPra * 2)).toFixed(2);
+        var totPra = (dirittiPra + (bolloPra * notepra)).toFixed(2);
         alert(totPra);
         //document.getElementById("passPra").value = (dirittiPra + (bolloPra * 2)).toFixed(2);
         document.getElementById("passPra").value = totPra;
@@ -524,6 +532,10 @@ var province20 = ["ar","av","bn","ci","gr","lt","pn","re","sr","ts","ud","vi"];
 var province25 = ["fe","kr","so"];
 var provinciaselezionata = null;
 
+
+
+
+
 if (province00.indexOf(test) > -1 ) {
     provinciaselezionata = 1.0;
 } else if (province10.indexOf(test) > -1 ) {
@@ -572,30 +584,34 @@ var portataNetta = $$("select#portatanetta").val();
 var importoIpt = null;
 var valoreKw = document.getElementById("numerokw").value;
 
+
+var chk30anni = document.getElementById("check30anni");
+
+
+
 if (test2 == "av") {
-    if(valoreKw < 54) {
-        importoIpt = (iptBase * provinciaselezionata);
-        importoIpt = Math.floor(importoIpt);
-        } else {
-            importoIpt = valoreKw * iptCoeff * provinciaselezionata;
-            importoIpt = Math.ceil(importoIpt);
-        }
+    if (chk30anni.checked) {
+        importoIpt = 52;
+        } else if (valoreKw < 54) {
+            importoIpt = (iptBase * provinciaselezionata);
+            importoIpt = Math.floor(importoIpt);
+            } else {
+                importoIpt = valoreKw * iptCoeff * provinciaselezionata;
+                importoIpt = Math.ceil(importoIpt);
+            }
     } else if (test2 === "mc") {
-        importoIpt = 0;
-        alert(importoIpt);
+        if (chk30anni.checked) {
+            importoIpt = 26;
+        } else {
+            importoIpt = 0;
+        }
+            //alert(importoIpt);
     } else if (test2 === "ac") {
         importoIpt = portataNetta * provinciaselezionata;
         importoIpt = Math.round(importoIpt);
-        alert(importoIpt);
-
-
-        
-        //importoIpt = portataNetta;
-
-
     } else if (test2 === "sp") {
         importoIpt = (valoreKw * iptCoeff * provinciaselezionata) / 4;
-        importoIpt = Math.ceil(importoIpt);
+        importoIpt = Math.round(importoIpt);
     }
 
     document.getElementById("passIpt").value = importoIpt;
@@ -604,3 +620,6 @@ if (test2 == "av") {
 function round5(x){
     return Math.ceil(x/5)*5;
 }
+
+
+
