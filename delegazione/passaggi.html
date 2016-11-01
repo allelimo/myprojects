@@ -164,26 +164,22 @@
           <li>
             <div class="item-content">
               <div class="item-inner"> 
-                <div class="item-title label">Modifica</div>
-                <div class="item-input input-switch">
-                  <label class="label-switch">
-                    <input type="checkbox"/>
-                    <div class="checkbox"></div>
-                  </label>
-            </div></div></div>
-          </li>
-
-          <li>
-            <div class="item-content">
-              <div class="item-inner"> 
-                <div class="item-title label">Modifica2</div>
+                <div class="item-title label">Sconto</div>
                 <div class="item-after"> 
                     <div class="item-input">
                       <label class="label-switch">
-                        <input type="checkbox"/>
+                        <input type="checkbox" name="checksconto" id="checksconto" onchange="fApplicaASconto()"/>
                         <div class="checkbox"></div>
                       </label>
             </div></div></div></div>
+          </li>
+          <li><!--totale-->
+            <div class="item-content">
+              <div class="item-inner"> 
+                <div class="item-title label">Importo scontato</div>
+                <div class="item-input disabled">
+                  <input type="text" style="text-align:right" placeholder="totale" id="passScontato"/>
+            </div></div></div>
           </li>
 
           <li>

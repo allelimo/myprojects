@@ -136,6 +136,7 @@ var myApp = new Framework7({
 
 // variabileglobale
 window.dirittiPosta = null;
+window.scontoDiritti = null;
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
@@ -324,8 +325,10 @@ myApp.onPageInit("passaggi", function (page) {
         var dirittiAci1 = parseFloat(jsonvalues3.acidir1); 
         var dirittiAci2 = parseFloat(jsonvalues3.acidir2); 
         var dirittiAci3 = parseFloat(jsonvalues3.acidir3); 
+        scontoDiritti = parseFloat(jsonvalues3.acisconto);
         document.getElementById("passDiritti").value = (dirittiAci1 + dirittiAci2 + dirittiAci3).toFixed(2);
         document.getElementById("passIva").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22).toFixed(2);
+
     }
     // hack orribile per ricalcolo forzato
     qualcosa();
@@ -634,6 +637,12 @@ totale = round5(totale);
 
 document.getElementById("passTotale").value = totale.toFixed(2);
 
+var chkSconto = document.getElementById("checksconto");
+    if (chkSconto.checked) {
+        document.getElementById("passScontato").value = (totale - scontoDiritti).toFixed(2);
+    } else {
+                document.getElementById("passScontato").value = null;
+    }
 }
 
 function round5(x){
@@ -643,4 +652,8 @@ function round5(x){
 function fPassaggiReset() {
     fListReset("listaPassaggi");
     myApp.formDeleteData("form_passaggi");
+}
+
+function fApplicaASconto() {
+    qualcosa();
 }
