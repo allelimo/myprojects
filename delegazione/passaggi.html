@@ -11,7 +11,7 @@
     <div class="page-content">
       <!--<div class="content-block-title">generic title</div>-->
       <form id="form_passaggi" class="store-data list-block tablet-inset">
-        <ul id="listaGeneric">
+        <ul id="listaPassaggi">
           <!-- Smart select item -->
           <li>
             <!-- Additional "smart-select" class -->
@@ -38,13 +38,13 @@
               <div class="item-inner"> 
                 <div class="item-title label">kW</div>
                 <div class="item-input">
-                  <input type="number" style="text-align:right" placeholder="importo" name="numerokw" id="numerokw"/>
+                  <input type="number" style="text-align:right" placeholder="-" name="numerokw" id="numerokw"/>
                 </div>
             </div></div>
           </li>
           <li><!--riga 3-->
             <!-- Additional "smart-select" class -->
-            <a href="#" class="item-link smart-select"> <!--test inset per smart select non funziona -->
+            <a href="#" class="item-link smart-select" data-form-theme=" tablet-inset""> <!--test inset per smart select non funziona -->
               <!-- select -->
               <select name="portatanetta" id="portatanetta">
                 <option value="199.35" >fino a 700 kg</option>
@@ -66,7 +66,7 @@
           <li><!--riga 3-->
           <li>
             <!-- Additional "smart-select" class -->
-            <a href="#" class="item-link smart-select">
+            <a href="#" class="item-link smart-select" data-form-theme=" tablet-inset"">
               <!-- select -->
               <select name="provincia" id="provincia">
               {{#each props}}
@@ -112,7 +112,7 @@
               <div class="item-inner"> 
                 <div class="item-title label">Ipt</div>
                 <div class="item-input disabled">
-                  <input type="number" style="text-align:right" placeholder="importo" name="passIpt" id="passIpt"/>
+                  <input type="number" style="text-align:right" placeholder="-" id="passIpt"/>
                 </div>
             </div></div>
           </li>
@@ -121,7 +121,7 @@
               <div class="item-inner"> 
                 <div class="item-title label">Pra</div>
                 <div class="item-input disabled">
-                  <input type="number" style="text-align:right" placeholder="importo" id="passPra"/>
+                  <input type="number" style="text-align:right" placeholder="-" id="passPra"/>
                 </div>
             </div></div>
           </li>
@@ -130,7 +130,7 @@
               <div class="item-inner"> 
                 <div class="item-title label">Umc</div>
                 <div class="item-input disabled">
-                  <input type="number" style="text-align:right" placeholder="importo" id="passUmc"/>
+                  <input type="number" style="text-align:right" placeholder="-" id="passUmc"/>
                 </div>
             </div></div>
           </li>
@@ -139,7 +139,7 @@
               <div class="item-inner"> 
                 <div class="item-title label">Diritti</div>
                 <div class="item-input disabled">
-                  <input type="number" style="text-align:right" placeholder="importo" id="passDiritti"/>
+                  <input type="number" style="text-align:right" placeholder="-" id="passDiritti"/>
                 </div>
             </div></div>
           </li>
@@ -148,16 +148,16 @@
               <div class="item-inner"> 
                 <div class="item-title label">Iva</div>
                 <div class="item-input disabled">
-                  <input type="number" style="text-align:right" placeholder="importo" id="passIva"/>
+                  <input type="number" style="text-align:right" placeholder="-" id="passIva"/>
                 </div>
             </div></div>
           </li>
           <li><!--totale-->
             <div class="item-content">
               <div class="item-inner"> 
-                <div class="item-title label">totale</div>
+                <div class="item-title label">Totale</div>
                 <div class="item-input disabled">
-                  <input type="text" style="text-align:right" placeholder="totale" id="opzioneTotale" />
+                  <input type="text" style="text-align:right" placeholder="totale" id="passTotale"/>
             </div></div></div>
           </li>
 
@@ -194,7 +194,7 @@
         <div class="list-block tablet-inset">
           <ul>
             <li>
-              <a href="#" class="item-link list-button-red" id="mybutton_gn2" onclick="myfunction_a2()">non usare</a>
+              <a href="#" class="item-link list-button-red" id="mybutton_gn2" onclick="fPassaggiReset()">Cancella tutti i valori</a>
             </li>                        
           </ul>
         </div>

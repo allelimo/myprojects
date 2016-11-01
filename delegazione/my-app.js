@@ -15,10 +15,6 @@ var myApp = new Framework7({
     template7Data: {
         // Will be applied for page with "projects.html" url
         'url:passaggi.html': {
-        //     provaelenco: [
-        //         { psg: "mi", prv: "milano" },{ psg: "bo", prv: "bologna"},{ psg: "bg", prv: "bergamo" },{ psg: "sa", prv: "salerno" },{ psg: "me", prv: "messina" },
-        //     ],
-        // },
             props: {
                 ag: "agrigento",
                 al: "alessandria",
@@ -139,10 +135,7 @@ var myApp = new Framework7({
 'use strict';
 
 // variabileglobale
-window.dirittiPosta = null; // o valore di default?
-//window.selProvincia = null;
-
-
+window.dirittiPosta = null;
 
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
@@ -152,7 +145,7 @@ myApp.onPageInit('index', function (page) {
         var jsonstring = JSON.stringify(storedData); 
         var jsonvalues = JSON.parse(jsonstring);
         dirittiPosta = parseFloat(jsonvalues.posimp); // variabile globale perchè devo usarla in più pagine/funzioni
-        alert(dirittiPosta);
+        //alert(dirittiPosta);
     }
 });
 //And now we initialize app
@@ -334,18 +327,9 @@ myApp.onPageInit("passaggi", function (page) {
         document.getElementById("passDiritti").value = (dirittiAci1 + dirittiAci2 + dirittiAci3).toFixed(2);
         document.getElementById("passIva").value = ((dirittiAci1 + dirittiAci2 + dirittiAci3) * 0.22).toFixed(2);
     }
+    // hack orribile per ricalcolo forzato
+    qualcosa();
 });
-
-
-
-function testthis(element){
-    // alert("testthis");
-    // var pippo = document.getElementById("pradir").value;
-    // pippo = pippo.toFixed(2);
-    // document.getElementById("pradir").value = pippo;
-
-}
-
 
 // ============================= //
 // funzioni generiche            //
@@ -495,7 +479,7 @@ function fCheckMyCLick() {
     }
 }
 
-// funziona coe toggle. semplice ed efficace
+// funziona come toggle. semplice ed efficace
 function fCheckMyClick2() {
     document.getElementById("id_gen2_1").classList.toggle("disabled");
 }
@@ -601,7 +585,7 @@ var test2 = $$("select#tipoveicolo").val();
 var iptBase = 150.81;
 var iptCoeff = 3.51;
 var portataNetta = $$("select#portatanetta").val();
-var importoIpt = null;
+var importoIpt; // = null;
 var valoreKw = document.getElementById("numerokw").value;
 
 
@@ -634,7 +618,7 @@ if (test2 == "av") {
         importoIpt = Math.round(importoIpt);
     }
 
-    document.getElementById("passIpt").value = importoIpt;
+    document.getElementById("passIpt").value = importoIpt.toFixed(2);
 
 
 // mettiamo insieme i valori:
@@ -648,7 +632,7 @@ var totale = (impIpt + impPra + impUmc + impDiritti + impIva);
 
 totale = round5(totale);
 
-document.getElementById("opzioneTotale").value = totale.toFixed(2);
+document.getElementById("passTotale").value = totale.toFixed(2);
 
 }
 
@@ -656,3 +640,7 @@ function round5(x){
     return Math.ceil(x/5)*5;
 }
 
+function fPassaggiReset() {
+    fListReset("listaPassaggi");
+    myApp.formDeleteData("form_passaggi");
+}
