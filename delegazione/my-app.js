@@ -1,9 +1,13 @@
 // Initialize your app
 var myApp = new Framework7({
     init: false, //Disable App's automatic initialization
-
+    // traduzione di parametri
+    modalButtonCancel: 'Annulla',
+    modalTitle: 'Delegazioni',
+    // quando selezionato uno smart, chiudi automaticamente
     smartSelectBackOnSelect: true,
-
+    
+    // uso dei templates
     precompileTemplates: true,
     // Enabled pages rendering using Template7
     template7Pages: true,
@@ -132,7 +136,7 @@ var myApp = new Framework7({
 });
 
 // dichiarazione per tutto il file
-"use strict";
+'use strict';
 
 // variabileglobale
 window.dirittiPosta = null; // o valore di default?
@@ -222,15 +226,18 @@ function fModificaImpostazioni() {
     fDisabilitaInput("listaImpostazioniPoste");
 }
 
+// aggiunta conferma per reset impostazioni
 function fResetImpostazioni() {
-    fListReset("listaImpostazioniPra");
-    fListReset("listaImpostazioniUmc");
-    fListReset("listaImpostazioniAci");
-    fListReset("listaImpostazioniPoste");
-    myApp.formDeleteData("form_impostazioni_1");
-    myApp.formDeleteData("form_impostazioni_2");
-    myApp.formDeleteData("form_impostazioni_3");
-    myApp.formDeleteData("form_impostazioni_4");
+    myApp.confirm("Cancello tutte le impostazioni?", function () {
+        fListReset("listaImpostazioniPra");
+        fListReset("listaImpostazioniUmc");
+        fListReset("listaImpostazioniAci");
+        fListReset("listaImpostazioniPoste");
+        myApp.formDeleteData("form_impostazioni_1");
+        myApp.formDeleteData("form_impostazioni_2");
+        myApp.formDeleteData("form_impostazioni_3");
+        myApp.formDeleteData("form_impostazioni_4");
+    });
 }
 
 function fListDecimali(nomelista) {
@@ -648,6 +655,4 @@ document.getElementById("opzioneTotale").value = totale.toFixed(2);
 function round5(x){
     return Math.ceil(x/5)*5;
 }
-
-
 
