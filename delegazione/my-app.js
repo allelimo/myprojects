@@ -1,10 +1,11 @@
 // Initialize your app
 var myApp = new Framework7({
-    init: false, //Disable App's automatic initialization
-    // traduzione di parametri
+    //Disable App's automatic initialization
+    init: false, 
+    // traduzione in italiano
     modalButtonCancel: 'Annulla',
     modalTitle: 'Delegazioni',
-    // quando selezionato uno smart, chiudi automaticamente
+    // chiudi automaticamente una smart list
     smartSelectBackOnSelect: true,
     
     // uso dei templates
@@ -134,21 +135,29 @@ var myApp = new Framework7({
 // dichiarazione per tutto il file
 'use strict';
 
-// variabileglobale
+// variabili globali
 window.dirittiPosta = null;
 window.scontoDiritti = null;
 
+// ============================= //
+// inizializzazione delle pagine //
+// ============================= //
+
+// ============================= //
+// pagina: index                 //
+// ============================= //
+
 //Now we add our callback for initial page
 myApp.onPageInit('index', function (page) {
-//leggi le impostazioni da pagina impostazioni
+// recupera la prima variabile globale da pagina impostazioni
     var storedData = myApp.formGetData('form_impostazioni_4');
     if(storedData) {
         var jsonstring = JSON.stringify(storedData); 
         var jsonvalues = JSON.parse(jsonstring);
-        dirittiPosta = parseFloat(jsonvalues.posimp); // variabile globale perchè devo usarla in più pagine/funzioni
-        //alert(dirittiPosta);
+        dirittiPosta = parseFloat(jsonvalues.posimp);
     }
 });
+
 //And now we initialize app
 myApp.init();
 
@@ -169,24 +178,6 @@ var mainView = myApp.addView('.view-main', {
 // ============================= //
 // inizializzazione delle pagine //
 // ============================= //
-
-// prima di aprire pagina gen1
-myApp.onPageInit("gen1", function (page) {
-    var storedData = myApp.formGetData('form_gen2');  // il form della seconda pagina
-    if(storedData) {
-        var cippa = JSON.stringify(storedData); // qui ci sono tutte le coppie nome/valore
-        var lippa = JSON.parse(cippa);
-        var myglobal1 = lippa.gen2_1;
-        document.getElementById("id_gen1_1").value = myglobal1;
-    }
-});
-
-// prima di aprire pagina gen2_1
-myApp.onPageInit("gen2", function (page) {
-    document.getElementById("id_gen2_1").className="item-input disabled";
-    var chkBox = document.getElementById('check1');
-    chkBox.checked = false;
-});
 
 // ============================= //
 // pagina impostazioni           //
@@ -234,6 +225,7 @@ function fResetImpostazioni() {
     });
 }
 
+// funzione generica
 function fListDecimali(nomelista) {
     var ul = document.getElementById(nomelista);
     var items = ul.getElementsByTagName("input");
@@ -244,6 +236,7 @@ function fListDecimali(nomelista) {
     }
 }
 
+// funzione generica
 function fDisabilitaInput(nomelista) {
     var ul = document.getElementById(nomelista);
     var items = ul.getElementsByTagName("input");
@@ -255,7 +248,6 @@ function fDisabilitaInput(nomelista) {
 // ============================= //
 // pagina passaggi               //
 // ============================= //
-
 
 function fModificaCdp() {
     var notepra = 2;
@@ -289,7 +281,6 @@ myApp.onPageInit("passaggi", function (page) {
     chk30anni.checked = false;
     // deafult:
     var notepra = 2;
-
 
      // da pagina impostazioni 
     var storedData1 = myApp.formGetData('form_impostazioni_1');  // il form della seconda pagina form_gen2
@@ -331,7 +322,7 @@ myApp.onPageInit("passaggi", function (page) {
 
     }
     // hack orribile per ricalcolo forzato
-    qualcosa();
+    fCalcolaIpt();
 });
 
 // ============================= //
@@ -464,74 +455,12 @@ function fAssegniReset2(){
 }
 
 
-// pagina gen1
-function test01() {
-    document.getElementById("id_gen1_1").className="item-input disabled";
-}
+// ============================= //
+// pagina passaggi               //
+// ============================= //
 
-// funziona me è troppo complicata, quella sotto è parecchio più semplice :)
-function fCheckMyCLick() {
-    // controllare check
-    // se no, disabled - se si, enabled
-    var chkBox = document.getElementById('check1');
-    if (chkBox.checked) {
-        document.getElementById("id_gen2_1").className="item-input";
-    }
-    else {
-        document.getElementById("id_gen2_1").className="item-input disabled";
-    }
-}
-
-// funziona come toggle. semplice ed efficace
-function fCheckMyClick2() {
-    document.getElementById("id_gen2_1").classList.toggle("disabled");
-}
-
-// usata in pagina generic come test
-function qualcosa(){
-    //alert("qualcosa");
-
-// var iptbase = 150.81;
-// var iptcoeff = 3.51;
-// var iptmilano = 1.3;
-
-// var kw = 101;
-// var iptlorda = 0;
-// var iptarrot = 0;
-
-// if(kw < 54) {
-
-//     iptlorda = iptbase * iptmilano;
-//     iptlorda = Math.floor(iptlorda);
-//     iptarrot = iptlorda.toFixed(2);
-// } else {
-
-// iptlorda = kw * iptcoeff * iptmilano;
-// alert(iptlorda);
-// iptlorda = Math.ceil(iptlorda);
-// iptarrot = iptlorda.toFixed(2);
-
-// }
-// alert(iptlorda);
-// alert(iptarrot);
-
-// alert(round5(iptarrot));
-
-// test array province
-// var province = ["mi", "bo", "to", "ve"];
-// alert(province.indexOf("bo"));
-//alert(province.indexOf("va"));
-
-
-
-//var abcdef = $('provincia').val();
-
-var test = $$("select#provincia").val();
-    if (test.length){
-//		 myApp.alert("select exists");
-//         myApp.alert(test);
-         //alert(test);
-    }
+// calcolo dell'ipt e del costo totale
+function fCalcolaIpt(){
 
 var province00 = ["ao","bz","tn"];
 var province10 = ["mt"];
@@ -539,64 +468,32 @@ var province20 = ["ar","av","bn","ci","gr","lt","pn","re","sr","ts","ud","vi"];
 var province25 = ["fe","kr","so"];
 var provinciaselezionata = null;
 
+var testSelProv = $$("select#provincia").val();
 
-
-
-
-if (province00.indexOf(test) > -1 ) {
+if (province00.indexOf(testSelProv) > -1 ) {
     provinciaselezionata = 1.0;
-} else if (province10.indexOf(test) > -1 ) {
+} else if (province10.indexOf(testSelProv) > -1 ) {
     provinciaselezionata = 1.1;
-} else if (province20.indexOf(test) > -1 ) {
+} else if (province20.indexOf(testSelProv) > -1 ) {
     provinciaselezionata = 1.2;
-} else if (province25.indexOf(test) > -1 ) {
+} else if (province25.indexOf(testSelProv) > -1 ) {
     provinciaselezionata = 1.25;
 } else {
     provinciaselezionata = 1.3;
 }
 
-// alert(provinciaselezionata);
 
+var testTipoVeicolo = $$("select#tipoveicolo").val();
 
-
-//alert("value " + abcdef);
-
-
-var test2 = $$("select#tipoveicolo").val();
-
-// var iptbase = 150.81;
-// var iptcoeff = 3.51;
-
-// if(kw < 54) {
-
-//     iptlorda = iptbase * iptmilano;
-//     iptlorda = Math.floor(iptlorda);
-//     iptarrot = iptlorda.toFixed(2);
-// } else {
-
-
-// iptlorda = kw * iptcoeff * iptmilano;
-// alert(iptlorda);
-// iptlorda = Math.ceil(iptlorda);
-// iptarrot = iptlorda.toFixed(2);
-
-
-// manca: controllo cdp
-// controllo epoca
-// controllo ipt autocarri se varia con provincia
-// controllo se speciali è corretto
 var iptBase = 150.81;
 var iptCoeff = 3.51;
 var portataNetta = $$("select#portatanetta").val();
 var importoIpt; // = null;
 var valoreKw = document.getElementById("numerokw").value;
-
-
 var chk30anni = document.getElementById("check30anni");
 
 
-
-if (test2 == "av") {
+if (testTipoVeicolo == "av") {
     if (chk30anni.checked) {
         importoIpt = 52;
         } else if (valoreKw < 54) {
@@ -606,17 +503,17 @@ if (test2 == "av") {
                 importoIpt = valoreKw * iptCoeff * provinciaselezionata;
                 importoIpt = Math.ceil(importoIpt);
             }
-    } else if (test2 === "mc") {
+    } else if (testTipoVeicolo === "mc") {
         if (chk30anni.checked) {
             importoIpt = 26;
         } else {
             importoIpt = 0;
         }
             //alert(importoIpt);
-    } else if (test2 === "ac") {
+    } else if (testTipoVeicolo === "ac") {
         importoIpt = portataNetta * provinciaselezionata;
         importoIpt = Math.round(importoIpt);
-    } else if (test2 === "sp") {
+    } else if (testTipoVeicolo === "sp") {
         importoIpt = (valoreKw * iptCoeff * provinciaselezionata) / 4;
         importoIpt = Math.round(importoIpt);
     }
@@ -625,7 +522,6 @@ if (test2 == "av") {
 
 
 // mettiamo insieme i valori:
-
 var impIpt = parseFloat(importoIpt);
 var impPra = parseFloat(document.getElementById("passPra").value);
 var impUmc = parseFloat(document.getElementById("passUmc").value);
@@ -655,5 +551,5 @@ function fPassaggiReset() {
 }
 
 function fApplicaASconto() {
-    qualcosa();
+    fCalcolaIpt();
 }
