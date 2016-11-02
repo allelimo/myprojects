@@ -541,6 +541,10 @@ var chkSconto = document.getElementById("checksconto");
     }
 }
 
+// ============================= //
+// altre funzioni generiche      //
+// ============================= //
+
 function round5(x){
     return Math.ceil(x/5)*5;
 }
